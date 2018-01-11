@@ -45,6 +45,32 @@
 
 
 
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
 
 
 
@@ -79,13 +105,13 @@
 
 
 
-<meta name="description" content="概述通过本篇教程，您将学习如何使用 Android Studio 轻松启动 Android NDK 项目开发。 开发环境  Android Studio 2.2 或以上的版本 Android NDK 11c+ 或以上的版本 Android SDK 最新版，这个一般会包含在 Android Studio 中。 Android 5.0+ 测试机或模拟器  创建一个 HelloJni 项目 创建完成如下">
+<meta name="description" content="概述通过本篇教程，您将学习如何使用 Android Studio 轻松启动 Android NDK 项目开发。">
 <meta name="keywords" content="Android">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android Studio 快速启动 Android NDK 项目开发">
 <meta property="og:url" content="http://yoursite.com/2017/04/30/start-ndk-project/index.html">
 <meta property="og:site_name" content="Skyrin&#39;s Blog">
-<meta property="og:description" content="概述通过本篇教程，您将学习如何使用 Android Studio 轻松启动 Android NDK 项目开发。 开发环境  Android Studio 2.2 或以上的版本 Android NDK 11c+ 或以上的版本 Android SDK 最新版，这个一般会包含在 Android Studio 中。 Android 5.0+ 测试机或模拟器  创建一个 HelloJni 项目 创建完成如下">
+<meta property="og:description" content="概述通过本篇教程，您将学习如何使用 Android Studio 轻松启动 Android NDK 项目开发。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/3551539-815790c084741e5b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/860">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/3551539-7a5df3b3218085ee.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/860">
@@ -95,10 +121,10 @@
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/3551539-d738480465ae561f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/860">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/3551539-910df7f10aac2aba.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/860">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/3551539-5a8555a30d934ac7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/860">
-<meta property="og:updated_time" content="2018-01-11T02:38:14.543Z">
+<meta property="og:updated_time" content="2018-01-11T05:42:50.730Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android Studio 快速启动 Android NDK 项目开发">
-<meta name="twitter:description" content="概述通过本篇教程，您将学习如何使用 Android Studio 轻松启动 Android NDK 项目开发。 开发环境  Android Studio 2.2 或以上的版本 Android NDK 11c+ 或以上的版本 Android SDK 最新版，这个一般会包含在 Android Studio 中。 Android 5.0+ 测试机或模拟器  创建一个 HelloJni 项目 创建完成如下">
+<meta name="twitter:description" content="概述通过本篇教程，您将学习如何使用 Android Studio 轻松启动 Android NDK 项目开发。">
 <meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/3551539-815790c084741e5b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/860">
 
 
@@ -231,9 +257,47 @@
       
 
       
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
     </ul>
   
 
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
   
 </nav>
 
@@ -352,6 +416,7 @@
 
       
         <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>通过本篇教程，您将学习如何使用 Android Studio 轻松启动 Android NDK 项目开发。</p>
+<a id="more"></a>
 <p><strong>开发环境</strong></p>
 <ul>
 <li><a href="https://developer.android.google.cn/studio/index.html" target="_blank" rel="noopener">Android Studio 2.2</a> 或以上的版本</li>
@@ -488,6 +553,24 @@
     
 
     
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    skyrin
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yoursite.com/2017/04/30/start-ndk-project/" title="Android Studio 快速启动 Android NDK 项目开发">http://yoursite.com/2017/04/30/start-ndk-project/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
 
     <footer class="post-footer">
       
@@ -607,6 +690,10 @@ var jiathis_config={
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.gif"
+                alt="skyrin" />
+            
               <p class="site-author-name" itemprop="name">skyrin</p>
               <p class="site-description motion-element" itemprop="description"></p>
           </div>
@@ -650,6 +737,34 @@ var jiathis_config={
 
           
 
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:cnskyrin@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.jianshu.com/u/32f1afa17c58" target="_blank" title="简书">
+                      
+                        <i class="fa fa-fw fa-globe"></i>简书</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://www.xiami.com/collect/360454952" target="_blank" title="音乐">
+                      
+                        <i class="fa fa-fw fa-music"></i>音乐</a>
+                  </span>
+                
+            </div>
           
 
           
@@ -871,6 +986,19 @@ var jiathis_config={
 
 
 
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.4"></script>
+
+
 
   
 
@@ -884,8 +1012,13 @@ var jiathis_config={
   
 
   
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.4"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.4"></script>
+
 
   
+  <script type="text/javascript" src="/js/src/exturl.js?v=5.1.4"></script>
+
 
 </body>
 </html>
