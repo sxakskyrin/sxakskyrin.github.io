@@ -134,7 +134,7 @@
       apiKey: '',
       indexName: '',
       hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"未发现与${query}相关的内容","hits_stats":"${hits} results found in ${time} ms"}
     }
   };
 </script>
@@ -261,26 +261,22 @@
   
     <div class="site-search">
       
-  
-  <div class="algolia-popup popup search-popup">
-    <div class="algolia-search">
-      <div class="algolia-search-input-icon">
-        <i class="fa fa-search"></i>
-      </div>
-      <div class="algolia-search-input" id="algolia-search-input"></div>
-    </div>
-
-    <div class="algolia-results">
-      <div id="algolia-stats"></div>
-      <div id="algolia-hits"></div>
-      <div id="algolia-pagination" class="algolia-pagination"></div>
-    </div>
-
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
     <span class="popup-btn-close">
       <i class="fa fa-times-circle"></i>
     </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
   </div>
-
+  <div id="local-search-result"></div>
+</div>
 
 
 
@@ -299,6 +295,845 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://skyrin.cc/2018/01/14/fiddler-usage/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="skyrin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Skyrin's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/01/14/fiddler-usage/" itemprop="url">Fiddler 极速上手</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-14T20:51:12+08:00">
+                2018-01-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Tools/" itemprop="url" rel="index">
+                    <span itemprop="name">Tools</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p><a href="http://www.telerik.com/fiddler" target="_blank" rel="noopener">Fiddler</a> 是一个 <a href="http://baike.baidu.com/item/http%E5%8D%8F%E8%AE%AE" target="_blank" rel="noopener">http协议</a> 调试代理工具，它能够记录并检查所有你的电脑和互联网之间的http通讯，设置断点，查看所有的“进出” Fiddler 的数据（指 [cookie] (<a href="http://baike.baidu.com/item/cookie/1119" target="_blank" rel="noopener">http://baike.baidu.com/item/cookie/1119</a>) 、html、js、css 等文件，这些都可以让你胡乱修改的意思）。 Fiddler 要比其他的网络调试器要更加简单，因为它不仅仅暴露http通讯还提供了一个用户友好的格式。 —— 百度百科</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/01/14/fiddler-usage/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://skyrin.cc/2018/01/08/apache2-to-create-a-virtual-host/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="skyrin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Skyrin's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/01/08/apache2-to-create-a-virtual-host/" itemprop="url">Apache2 创建虚拟主机</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-08T09:36:42+08:00">
+                2018-01-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="1、基础概念"><a href="#1、基础概念" class="headerlink" title="1、基础概念"></a><strong>1、基础概念</strong></h2><h3 id="虚拟主机"><a href="#虚拟主机" class="headerlink" title="虚拟主机"></a><strong>虚拟主机</strong></h3><p>术语<strong>虚拟主机</strong>指的是在单一机器上运行多个网站 (例如 company1.example.com 和 company2.example.com) 。 虚拟主机可以“基于 IP”，即每个 IP 一个站点； 或者“基于名称”， 即每个 IP 多个站点。这些站点运行在同一物理服务器上的事实不会明显的透漏给最终用户。</p>
+<p>Apache 是第一个支持基于 IP 的虚拟主机的服务器。 Apache 版本 1.1 和更新的版本同时支持基于 IP 和基于名称的虚拟主机。 基于名称的虚拟主机有时候称为基于主机或非 IP 的虚拟主机.</p>
+<p>以下解释是在 Apache 中支持虚拟主机的所有详细信息的文档页面列表。</p>
+<p><strong>虚拟主机支持的配置</strong></p>
+<ul>
+<li><a href="http://httpd.apache.org/docs/2.4/vhosts/name-based.html" target="_blank" rel="noopener">基于名称的虚拟主机</a> (每个 IP 多个站点)</li>
+<li><a href="http://httpd.apache.org/docs/2.4/vhosts/ip-based.html" target="_blank" rel="noopener">基于 IP 的虚拟主机</a> (每个 IP 一个站点)</li>
+<li><a href="http://httpd.apache.org/docs/2.4/vhosts/examples.html" target="_blank" rel="noopener">虚拟主机样例</a></li>
+<li><a href="http://httpd.apache.org/docs/2.4/vhosts/fd-limits.html" target="_blank" rel="noopener">文件句柄限制</a> (应用于日志文件太多)</li>
+<li><a href="http://httpd.apache.org/docs/2.4/vhosts/mass.html" target="_blank" rel="noopener">动态配置的大规模虚拟主机</a></li>
+<li><a href="http://httpd.apache.org/docs/2.4/vhosts/details.html" target="_blank" rel="noopener">虚拟主机匹配的深入讨论</a></li>
+</ul>
+<p><strong>配置指令</strong></p>
+<ul>
+<li><a href="http://httpd.apache.org/docs/2.4/mod/core.html#virtualhost" target="_blank" rel="noopener">&lt;VirtualHost&gt;</a></li>
+<li><a href="http://httpd.apache.org/docs/2.4/mod/core.html#servername" target="_blank" rel="noopener">ServerName</a></li>
+<li><a href="http://httpd.apache.org/docs/2.4/mod/core.html#serveralias" target="_blank" rel="noopener">ServerAlias</a></li>
+<li><a href="http://httpd.apache.org/docs/2.4/mod/core.html#serverpath" target="_blank" rel="noopener">ServerPath</a></li>
+</ul>
+<h3 id="配置-Apache-HTTP-Server-侦听特定端口和地址"><a href="#配置-Apache-HTTP-Server-侦听特定端口和地址" class="headerlink" title="配置 Apache HTTP Server 侦听特定端口和地址"></a><strong>配置 Apache HTTP Server 侦听特定端口和地址</strong></h3><table>
+<thead>
+<tr>
+<th style="text-align:left">相关模块</th>
+<th style="text-align:left">相关指令</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><a href="http://httpd.apache.org/docs/2.4/mod/core.html" target="_blank" rel="noopener">core</a></td>
+<td style="text-align:left"><a href="http://httpd.apache.org/docs/2.4/mod/core.html#virtualhost" target="_blank" rel="noopener">&lt;VirtualHost&gt;</a></td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="http://httpd.apache.org/docs/2.4/mod/mpm_common.html" target="_blank" rel="noopener">mpm_common</a></td>
+<td style="text-align:left"><a href="http://httpd.apache.org/docs/2.4/mod/mpm_common.html#listen" target="_blank" rel="noopener">Listen</a></td>
+</tr>
+</tbody>
+</table>
+<p>当httpd启动时，它绑定到本地机器上的一些端口和地址，并等待传入​​的请求。默认情况下，它监听机器上的所有地址。但是，可能需要通知您在特定的端口上进行监听，或者只监听选定的地址或两者的组合。这通常与虚拟主机功能相结合， 虚拟主机功能决定了如何 httpd响应不同的IP地址，主机名和端口。</p>
+<p>该Listen 指令告诉服务器仅接受指定端口或地址和端口组合上的传入请求。如果在Listen 指令中仅指定一个端口号，则服务器将侦听所有接口上的给定端口。如果IP地址和端口一样，服务器将监听给定的端口和接口。Listen可以使用多个指令来指定多个地址和端口进行侦听。服务器将响应来自任何列出的地址和端口的请求。</p>
+<p>例如，使服务器接收所有地址的 80、8000 端口请求：</p>
+<pre><code>Listen 80
+Listen 8000
+</code></pre><p>使服务器接收指定地址的 80、8000 端口请求：</p>
+<pre><code>Listen 192.0.2.1:80
+Listen 192.0.2.5:8000
+</code></pre><p><strong>用 Listen 指定协议</strong></p>
+<p>大多数 Listen 配置不需要可选的第二协议参数。如果未指定，https 协议则是端口 443 的默认值，http 协议为所有其他端口默认值。该协议用于确定哪个模块应该处理请求，以及使用该 AcceptFilter 指令应用协议特定的优化。</p>
+<p>如果您在非标准端口上运行，则只需设置协议。例如，使用 https 协议在端口 8443 上运行一个站点：   </p>
+<pre><code>Listen 192.170.2.1:8443 https
+</code></pre><p><strong>Listen 与虚拟主机是如何协同工作的</strong></p>
+<p>Listen 指令不实现虚拟主机 - 它只告诉主服务器要监听的地址和端口。如果不使用<a href="http://httpd.apache.org/docs/2.4/mod/core.html#virtualhost" target="_blank" rel="noopener">&lt;VirtualHost&gt;</a> 指令，则服务器对于所有接受的请求将以相同的方式处理。但是，<a href="http://httpd.apache.org/docs/2.4/mod/core.html#virtualhost" target="_blank" rel="noopener">&lt;VirtualHost&gt;</a> 可以用来为一个或多个地址或端口指定不同的行为。要实现VirtualHost，服务器必须先被告知要使用的地址和端口。然后<a href="http://httpd.apache.org/docs/2.4/mod/core.html#virtualhost" target="_blank" rel="noopener">&lt;VirtualHost&gt;</a>为指定的地址和端口创建一个配置来设置这个虚拟主机的行为。请注意，如果<a href="http://httpd.apache.org/docs/2.4/mod/core.html#virtualhost" target="_blank" rel="noopener">&lt;VirtualHost&gt;</a>设置为服务器未侦听的地址和端口，则无法访问。</p>
+<h2 id="2、配置虚拟主机"><a href="#2、配置虚拟主机" class="headerlink" title="2、配置虚拟主机"></a><strong>2、配置虚拟主机</strong></h2><p><strong>上传站点到服务器</strong></p>
+<p>Apache 站点根目录位于 <code>/var/www/</code> ，新上传站点应位于 <code>www</code> 目录下，站点目录命名规则推荐使用 <code>domain-port</code></p>
+<p>创建站点目录</p>
+<pre><code>$ cd /var/www
+</code></pre><p>$ mkdir domain-7777</p>
+<p>上传请注意 <code>index.html</code> 应位于 <code>domain-7777</code> 目录</p>
+<p><strong>创建虚拟主机配置文件</strong></p>
+<pre><code>$ cd /etc/apache2/sites-available/
+</code></pre><p>$ vim 7777-ssl.conf</p>
+<p>输入如下配置并保存</p>
+<pre><code>Listen 7777
+&lt;IfModule mod_ssl.c&gt;
+&lt;VirtualHost *:7777&gt;
+    # The ServerName directive sets the request scheme, hostname and port that
+    # the server uses to identify itself. This is used when creating
+    # redirection URLs. In the context of virtual hosts, the ServerName
+    # specifies what hostname must appear in the request&apos;s Host: header to
+    # match this virtual host. For the default virtual host (this file) this
+    # value is not decisive as it is used as a last resort host regardless.
+    # However, you must set it for any further virtual host explicitly.
+    #ServerName www.example.com
+
+    ServerAdmin webmaster@localhost
+    ServerName rak.example.com
+    DocumentRoot /var/www/domain-7777
+
+    # Available loglevels: trace8, ..., trace1, debug, info, notice, warn,
+    # error, crit, alert, emerg.
+    # It is also possible to configure the loglevel for particular
+    # modules, e.g.
+    #LogLevel info ssl:warn
+
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+
+    # For most configuration files from conf-available/, which are
+    # enabled or disabled at a global level, it is possible to
+    # include a line for only one particular virtual host. For example the
+    # following line enables the CGI configuration for this host only
+    # after it has been globally disabled with &quot;a2disconf&quot;.
+    #Include conf-available/serve-cgi-bin.conf
+
+    SSLCertificateFile /etc/letsencrypt/live/rak.example.com/cert.pem
+    SSLCertificateKeyFile /etc/letsencrypt/live/rak.example.com/privkey.pem
+    Include /etc/letsencrypt/options-ssl-apache.conf
+    SSLCertificateChainFile /etc/letsencrypt/live/rak.example.com/chain.pem
+&lt;/VirtualHost&gt;
+&lt;/IfModule&gt;
+</code></pre><p><strong>使 7777-ssl.conf 配置生效</strong></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/3551539-33c56a7656d2c895.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>Apache 配置文件默认放在 <code>-available</code> 后缀的目录下，<code>-enabled</code> 后缀目录下放的是配置文件的引用，而 Apache 服务启动时只会加载 <code>-enabled</code> 后缀目录下的引用；Apache 这么做的目的是为了便于配置文件的管理，比如你要关闭一个虚拟主机，只需删除<code>-enabled</code> 后缀目录下相关虚拟主机的配置引用即可，而不必删除此虚拟主机配置文件本身，需要再次启动此虚拟主机时，只需要再次添加此虚拟主机相应配置文件的引用到 <code>-enabled</code> 后缀目录下即可</p>
+<p>所以，这里除了创建 7777-ssl.conf 配置文件，还需要将其引用到 sites-enabled/ 下</p>
+<pre><code>$ ln -s /etc/apache2/site-available/7777-ssl.conf /etc/apache2/site-enabled/7777-ssl.conf
+</code></pre><p>使用 <code>a2ensite</code> 命令启动虚拟主机，使用 <code>a2dissite</code> 命令停止虚拟主机</p>
+<pre><code>$ a2ensite 7777-ssl.conf
+</code></pre><p>$ service apache2 reload</p>
+<p>检查端口 7777 是否正常被侦听</p>
+<pre><code>$ netstat -a | grep &apos;:7777&apos;
+</code></pre><p>正常状态会查到如下结果</p>
+<pre><code>tcp        0      0 *:7777                  *:*                     LISTEN  
+</code></pre><p>如果没有结果，请尝试重启 Apache 服务器</p>
+<pre><code>$ service apache2 restart
+</code></pre><p>现在，输入 <a href="https://rak.example.com:7777" target="_blank" rel="noopener">https://rak.example.com:7777</a> 即可访问位于<code>/var/www/domain-7777/</code>下的站点了</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://skyrin.cc/2017/11/16/gradle-file-operation/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="skyrin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Skyrin's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/11/16/gradle-file-operation/" itemprop="url">Gradle 的文件操作</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-16T21:18:19+08:00">
+                2017-11-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Gradle/" itemprop="url" rel="index">
+                    <span itemprop="name">Gradle</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>众所周知，Gradle 作为一个项目构建工具，使用了 Groovy 语言来表述其脚本代码，而 Groovy 语言中的很多特性设计的有点“反人类”，这些特性对于老手来说写起来非常舒服，但是对于新手就很不友好了，因为不便于理解，很多萌新看着 Gradle 的脚本感觉很简单很清晰的样子，但是真到了自己去写的时候就会感觉无从下手，怎么写怎么报错；本文就从Gradle 的几个简单的文件操作顺带来分析一下这些奇葩的坑点，让大家对 Groovy 语法特性有个大致认知。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/11/16/gradle-file-operation/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://skyrin.cc/2017/05/31/float-window-utils/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="skyrin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Skyrin's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/05/31/float-window-utils/" itemprop="url">FloatWindowUtils 实现及事件冲突解决详解</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-31T20:15:45+08:00">
+                2017-05-31
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>悬浮窗即可以显示在宿主应用之外的 View 视图，理论上任何 View 都能以悬浮窗形式展示在宿主应用之外甚至锁屏界面，一般在工具类应用中使用的比较多，通过悬浮窗可以很方便的从外界与宿主应用进行交互，例如金山词霸的锁屏单词功能、AirDroid 的录制屏幕菜单、360优化大师的清理悬浮按钮等。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/05/31/float-window-utils/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://skyrin.cc/2017/05/09/android-fileuriexposedexception-resolve/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="skyrin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Skyrin's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/05/09/android-fileuriexposedexception-resolve/" itemprop="url">Android 7.0 FileUriExposedException 的处理</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-09T19:40:43+08:00">
+                2017-05-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>每次 Android 系统大版本升级时，身为 Android 开发者，除了接触新技能的喜悦之外不免也会有提心吊胆的时候，因为这个时候你过去写的 APP 在新系统的环境中随时面临崩溃，这并不是危言耸听，过去 Android 5.0 、6.0 权限控制机制的变动，各种版本的兼容适配想必大家都深有体会，所以每次版本升级时最稳妥的办法就是去官网浏览一遍版本新特性，尽早防患于未然，本文解决的 <code>FileUriExposedException</code> 就是 Android 7.0 版本常见的一个权限适配问题。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/05/09/android-fileuriexposedexception-resolve/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
     
       
 
@@ -446,246 +1281,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://skyrin.cc/2017/04/29/litepal-basic-usage/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="skyrin">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Skyrin's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/04/29/litepal-basic-usage/" itemprop="url">LitePal的基本用法</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-29T00:00:00+08:00">
-                2017-04-29
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="快速配置"><a href="#快速配置" class="headerlink" title="快速配置"></a>快速配置</h2><ul>
-<li>AS添加依赖如下</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">dependencies &#123;</span><br><span class="line">    compile <span class="string">'org.litepal.android:core:1.4.1'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>接着在项目的assets目录下面新建一个litepal.xml文件，并将以下代码拷贝进去：</li>
-</ul>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span><br><span class="line"><span class="tag">&lt;<span class="name">litepal</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dbname</span> <span class="attr">value</span>=<span class="string">"BookStore"</span> &gt;</span><span class="tag">&lt;/<span class="name">dbname</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span> <span class="attr">value</span>=<span class="string">"1"</span> &gt;</span><span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">list</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">list</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">litepal</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>在Application中初始化LitePal</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyApplication</span> <span class="keyword">extends</span> <span class="title">Application</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Context context;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate();</span><br><span class="line">        context = getApplicationContext();</span><br><span class="line">        LitePal.initialize(context);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Context <span class="title">getContext</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> context;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="创建和升级数据库"><a href="#创建和升级数据库" class="headerlink" title="创建和升级数据库"></a>创建和升级数据库</h2><ul>
-<li>先创建一个tableBean</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Book</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> id;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> pages;</span><br><span class="line">    <span class="keyword">private</span> String author;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">double</span> price;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getId</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setId</span><span class="params">(<span class="keyword">int</span> id)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.id = id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getPages</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> pages;</span><br><span class="line">    &#125;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>将Book类添加到模型映射表中</li>
-</ul>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span><br><span class="line"><span class="tag">&lt;<span class="name">litepal</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dbname</span> <span class="attr">value</span>=<span class="string">"BookStore"</span> &gt;</span><span class="tag">&lt;/<span class="name">dbname</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span> <span class="attr">value</span>=<span class="string">"1"</span> &gt;</span><span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">list</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">mapping</span> <span class="attr">class</span>=<span class="string">"com.example.admin.turingts.Book"</span>&gt;</span><span class="tag">&lt;/<span class="name">mapping</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">list</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">litepal</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>然后在进行任意一次数据库操作则数据库会被创建出来</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">findViewById(R.id.button).setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;  </span><br><span class="line">    <span class="meta">@Override</span>                                                              </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;                                          </span><br><span class="line">        Connector.getDatabase();                                           </span><br><span class="line">    &#125;                                                                      </span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<ul>
-<li>如果要升级数据库也无需做备份相关的复杂逻辑，例如增加新表后要升级数据库，如下修改即可</li>
-</ul>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span><br><span class="line"><span class="tag">&lt;<span class="name">litepal</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dbname</span> <span class="attr">value</span>=<span class="string">"BookStore"</span> &gt;</span><span class="tag">&lt;/<span class="name">dbname</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span> <span class="attr">value</span>=<span class="string">"2"</span> &gt;</span><span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">list</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">mapping</span> <span class="attr">class</span>=<span class="string">"com.example.admin.turingts.Book"</span>&gt;</span><span class="tag">&lt;/<span class="name">mapping</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">mapping</span> <span class="attr">class</span>=<span class="string">"com.example.admin.turingts.Category"</span>&gt;</span><span class="tag">&lt;/<span class="name">mapping</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">list</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">litepal</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h2 id="添加数据"><a href="#添加数据" class="headerlink" title="添加数据"></a>添加数据</h2><ul>
-<li>LitePal要求进行CRUD的模型表必须继承自DataSupport类，所以将Book类进行如下修改</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Book</span> <span class="keyword">extends</span> <span class="title">DataSupport</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> id;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> pages;</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
-<ul>
-<li>接着我们向Book表中插入数据，如下</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">findViewById(R.id.btn_add).setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123; </span><br><span class="line">    <span class="meta">@Override</span>                                                              </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;                                          </span><br><span class="line">                                                                           </span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;                                     </span><br><span class="line">            Book book = <span class="keyword">new</span> Book();                                        </span><br><span class="line">            book.setAuthor(<span class="string">"Keigo"</span>);                                    </span><br><span class="line">            book.setName(<span class="string">"《湖畔》"</span>);                                        </span><br><span class="line">            book.setPages(<span class="number">10</span> * i);                                         </span><br><span class="line">            book.setPrice(<span class="number">99.6</span>);                                           </span><br><span class="line">            book.setPress(<span class="string">"E.T.O"</span>);                                        </span><br><span class="line">            book.save();                                                   </span><br><span class="line">        &#125;                                                                  </span><br><span class="line">    &#125;                                                                      </span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<h2 id="更新数据"><a href="#更新数据" class="headerlink" title="更新数据"></a>更新数据</h2><ul>
-<li>LitePal提供了<code>updateAll()</code>方法来更新表，操作如下</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">findViewById(R.id.update).setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123; </span><br><span class="line">    <span class="meta">@Override</span>                                                             </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;                                         </span><br><span class="line">        Book book = <span class="keyword">new</span> Book();                                           </span><br><span class="line">        book.setAuthor(<span class="string">"Keigo"</span>);                                         </span><br><span class="line">        book.setName(<span class="string">"《白夜行》"</span>);                                           </span><br><span class="line">        book.updateAll(<span class="string">"name=? and price=?"</span>, <span class="string">"《湖畔》"</span>, <span class="string">"99.6"</span>);           </span><br><span class="line">    &#125;                                                                     </span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>可以看到我们先<code>new</code>出了一个Book实例，然后调用对应方法来设置需要更新的数据，最后调用<code>updateAll()</code>来更新表，这里<code>updateAll()</code>我们传入了一个类似于 sqlite 中 where 语句的条件约束来指明我们要更新的是哪条数据，如果这里不增加约束的话，整张表的数据都将被更新。上面的示例表示我要更新 <code>name</code> 字段为 <code>《湖畔》</code> 且 <code>price</code> 字段为 <code>99.6</code> 这条数据的 <code>author</code> 为 <code>Keigo</code>，<code>name</code> 为 <code>《白夜行》</code>。</p>
-</blockquote>
-<ul>
-<li>使用<code>updateAll()</code>还有一点需要注意，就是当你想要更新某个字段的值为<strong>默认值</strong>时，不能再使用<code>set()</code>。比如更新 pages 为 0，直接调用<code>book.setPages(0)</code>是无效的，因为在 java 中 int 的默认值就是 0 ，所以此时LitePal将不会对此更新，对于要更新的数据，LitePal为我们提供了一个<code>setToDefault()</code>方法，我们传入相应字段名就可以了，如下写法</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Book book = <span class="keyword">new</span> Book();</span><br><span class="line">book.setToDefault(<span class="string">"pages"</span>);</span><br><span class="line"></span><br><span class="line">book.updateAll();</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>上面代码的意思就是，将所有书的页数都更新为 0 ，因为<code>updateAll()</code>方法中没有条件约束，操作对所有数据都生效了。</p>
-</blockquote>
-<h2 id="删除数据"><a href="#删除数据" class="headerlink" title="删除数据"></a>删除数据</h2><ul>
-<li>LitePal删除数据的方式有两种，一种直接通过已存储对象的<code>delete()</code>方法删除，另一种方式如下</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">findViewById(R.id.delete).setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</span><br><span class="line">    <span class="meta">@Override</span>                                                            </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;                                        </span><br><span class="line">        <span class="comment">//通过delete()删除                                                   </span></span><br><span class="line">        Book book = <span class="keyword">new</span> Book();                                          </span><br><span class="line">        <span class="keyword">if</span> (book.isSaved())&#123;                                             </span><br><span class="line">            book.delete();                                               </span><br><span class="line">        &#125;                                                                </span><br><span class="line">        <span class="comment">//通过DataSupport.deleteAll()删除                                    </span></span><br><span class="line">        DataSupport.deleteAll(Book.class, <span class="string">"pages&gt;?"</span>, <span class="string">"80"</span>);              </span><br><span class="line">    &#125;                                                                    </span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>这里使用了<code>DataSupport.deleteAll()</code>来删除数据，第一个参数为指定表，第二个参数为约束条件，不指定约束则删除所有数据，同<code>updateAll()</code>原理相似。</p>
-</blockquote>
-<h2 id="查询数据"><a href="#查询数据" class="headerlink" title="查询数据"></a>查询数据</h2><ul>
-<li>LitePal查询数据的方式相当人性化，例如查询一张表中的数据，它会自动为我们赋值</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">findViewById(R.id.query).setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</span><br><span class="line">    <span class="meta">@Override</span>                                                           </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;                                       </span><br><span class="line">        List&lt;Book&gt; Books = DataSupport.findAll(Book.class);             </span><br><span class="line">        <span class="keyword">for</span> (Book book : Books) &#123;                                       </span><br><span class="line">            Log.d(MainActivity.<span class="keyword">this</span>.TAG,<span class="string">"name:"</span>+book.getName());        </span><br><span class="line">            Log.d(MainActivity.<span class="keyword">this</span>.TAG,<span class="string">"pages:"</span>+book.getPages());      </span><br><span class="line">            Log.d(MainActivity.<span class="keyword">this</span>.TAG,<span class="string">"author:"</span>+book.getAuthor());    </span><br><span class="line">            Log.d(MainActivity.<span class="keyword">this</span>.TAG,<span class="string">"price:"</span>+book.getPrice());      </span><br><span class="line">        &#125;                                                               </span><br><span class="line">    &#125;                                                                   </span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<ul>
-<li>除了<code>findAll()</code>之外 LitePal 还提供了其它便捷的 API，例如查询Book表中第一条数据</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Book firstBook = DataSupport.findFirst(Book.class);</span><br></pre></td></tr></table></figure>
-<ul>
-<li>查询Book表中最后一条数据</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Book lastBook = DataSupport.findLast(Book.class);</span><br></pre></td></tr></table></figure>
-<ul>
-<li><code>select()</code>方法用于指定查询哪几列数据，例如只获取 name and author 两列数据</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">List&lt;Book&gt; Books = DataSupport.select(<span class="string">"name"</span>,<span class="string">"author"</span>).find(Book.class);</span><br></pre></td></tr></table></figure>
-<ul>
-<li><code>where()</code>方法用于指定查询的约束条件，比如查询 author 是 skyrin 的数据</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">List&lt;Book&gt; Books = DataSupport.where(<span class="string">"author=?"</span>,<span class="string">"skyrin"</span>).find(Book.class);</span><br></pre></td></tr></table></figure>
-<ul>
-<li><code>order()</code>方法用于对指定结果排序，例如按照 price 升序排列 Book 中的数据</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">List&lt;Book&gt; Books = DataSupport.order(<span class="string">"price ASC"</span>).find(Book.class);</span><br></pre></td></tr></table></figure>
-<ul>
-<li><code>limit()</code>方法用于指定查询结果的数量，比如只查询表中前3条数据</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">List&lt;Book&gt; Books = DataSupport.limit(<span class="number">3</span>).find(Book.class);</span><br></pre></td></tr></table></figure>
-<ul>
-<li><code>offset()</code>用于指定查询结果的偏移量，比如从第二条开始往后获取3条数据</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">List&lt;Book&gt; Books = DataSupport.limit(<span class="number">3</span>).offset(<span class="number">1</span>).find(Book.class);</span><br></pre></td></tr></table></figure>
-<ul>
-<li>最后你可以使用以上5条规则进行组合，来完成一项复杂查询</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">List&lt;Book&gt; Books = DataSupport.select(<span class="string">"name"</span>, <span class="string">"pages"</span>)</span><br><span class="line">                        .where(<span class="string">"pages&gt;?"</span>, <span class="string">"300"</span>)</span><br><span class="line">                        .order(<span class="string">"pages desc"</span>)</span><br><span class="line">                        .limit(<span class="number">10</span>)</span><br><span class="line">                        .offset(<span class="number">5</span>)</span><br><span class="line">                        .find(Book.class);</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>以上代码表示查询 Book 表中 从 6 ~ 15 条字段为 name 和 pages 且 pages 大于 300 的数据，结果按 pages 降序排列</p>
-</blockquote>
-<ul>
-<li>最后的最后当以上所有方式都无法满足你变态的查询需求时，LitePal 还支持了原生 SQL 语法查询</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Cursor c = DataSupport.findBySQL(<span class="string">"select * from Book where author=? and pages&gt;?"</span>,<span class="string">"skyrin"</span>,<span class="string">"300"</span>);</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -736,7 +1331,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -747,7 +1342,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -758,7 +1353,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -983,24 +1578,328 @@
 
   
 
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
 
 
 
   
-  
-  
-  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
-
-  
-  
-  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
-  
-
-  <script src="/js/src/algolia-search.js?v=5.1.4"></script>
-
-
-
-  
 
   
 
@@ -1012,9 +1911,6 @@
   
 
   
-  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.4"></script>
-  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.4"></script>
-
 
   
   <script type="text/javascript" src="/js/src/exturl.js?v=5.1.4"></script>

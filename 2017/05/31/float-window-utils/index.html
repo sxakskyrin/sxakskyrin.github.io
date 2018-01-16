@@ -1,0 +1,1243 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Android," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="概述悬浮窗即可以显示在宿主应用之外的 View 视图，理论上任何 View 都能以悬浮窗形式展示在宿主应用之外甚至锁屏界面，一般在工具类应用中使用的比较多，通过悬浮窗可以很方便的从外界与宿主应用进行交互，例如金山词霸的锁屏单词功能、AirDroid 的录制屏幕菜单、360优化大师的清理悬浮按钮等。">
+<meta name="keywords" content="Android">
+<meta property="og:type" content="article">
+<meta property="og:title" content="FloatWindowUtils 实现及事件冲突解决详解">
+<meta property="og:url" content="http://skyrin.cc/2017/05/31/float-window-utils/index.html">
+<meta property="og:site_name" content="Skyrin&#39;s Blog">
+<meta property="og:description" content="概述悬浮窗即可以显示在宿主应用之外的 View 视图，理论上任何 View 都能以悬浮窗形式展示在宿主应用之外甚至锁屏界面，一般在工具类应用中使用的比较多，通过悬浮窗可以很方便的从外界与宿主应用进行交互，例如金山词霸的锁屏单词功能、AirDroid 的录制屏幕菜单、360优化大师的清理悬浮按钮等。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/3551539-c8b8b69a8cc3cd9b.gif?imageMogr2/auto-orient/strip">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/3551539-4e7453d1654b042f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-01-15T02:03:25.963Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="FloatWindowUtils 实现及事件冲突解决详解">
+<meta name="twitter:description" content="概述悬浮窗即可以显示在宿主应用之外的 View 视图，理论上任何 View 都能以悬浮窗形式展示在宿主应用之外甚至锁屏界面，一般在工具类应用中使用的比较多，通过悬浮窗可以很方便的从外界与宿主应用进行交互，例如金山词霸的锁屏单词功能、AirDroid 的录制屏幕菜单、360优化大师的清理悬浮按钮等。">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/3551539-c8b8b69a8cc3cd9b.gif?imageMogr2/auto-orient/strip">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"未发现与${query}相关的内容","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://skyrin.cc/2017/05/31/float-window-utils/"/>
+
+
+
+
+
+  <title>FloatWindowUtils 实现及事件冲突解决详解 | Skyrin's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Skyrin's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://skyrin.cc/2017/05/31/float-window-utils/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="skyrin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Skyrin's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">FloatWindowUtils 实现及事件冲突解决详解</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-31T20:15:45+08:00">
+                2017-05-31
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>悬浮窗即可以显示在宿主应用之外的 View 视图，理论上任何 View 都能以悬浮窗形式展示在宿主应用之外甚至锁屏界面，一般在工具类应用中使用的比较多，通过悬浮窗可以很方便的从外界与宿主应用进行交互，例如金山词霸的锁屏单词功能、AirDroid 的录制屏幕菜单、360优化大师的清理悬浮按钮等。</p>
+<a id="more"></a>
+<h2 id="需要了解的"><a href="#需要了解的" class="headerlink" title="需要了解的"></a>需要了解的</h2><p><strong>Window</strong></p>
+<blockquote>
+<p>Window 表示一个窗口的概念，在日常开发中直接接触 Window 的机会并不多，但是在特殊时候我们需要在桌面显示一个类似悬浮窗的东西，那么这种效果就需要用到 Window 来实现。Window 是一个抽象类，它的具体实现是 PhoneWindow。创建一个 Window 非常简单，我们通过 WindowManager 即可完成。 Android 中所有视图都是通过 Window 来呈现的，不管是  Activity、Dialog、还是 Toast，它们的视图实际上都是附加在 Window 上的。</p>
+</blockquote>
+<p><strong>WindowManager</strong></p>
+<blockquote>
+<p>应用程序用于与窗口管理器通信的接口，是外界访问 Window 的入口，使用 Context.getSystemService<br>(Context.WINDOW_SERVICE) 获取它的实例。WindowManager提供了 <code>addView(View view, ViewGroup.LayoutParams params)，removeView(View view)</code>，<code>updateViewLayout(View view, ViewGroup.LayoutParams params)</code> 三个方法用来向设备屏幕 添加、移除以及更新 一个 view 。</p>
+</blockquote>
+<p><strong>WindowManager.LayoutParams</strong></p>
+<blockquote>
+<p>通过名字就可以看出来 它是WindowManager的一个内部类，专门用来描述 view 的属性 比如大小、透明度 、初始位置、视图层级等。</p>
+</blockquote>
+<p><strong>DisplayMetrics</strong></p>
+<blockquote>
+<p>该对象用来描述关于显示器的一些信息，例如其大小，密度和字体缩放。例如获取屏幕宽度DisplayMetrics.widthPixels 。</p>
+</blockquote>
+<h2 id="最终效果"><a href="#最终效果" class="headerlink" title="最终效果"></a>最终效果</h2><p><img src="http://upload-images.jianshu.io/upload_images/3551539-c8b8b69a8cc3cd9b.gif?imageMogr2/auto-orient/strip" alt="example.gif"></p>
+<h2 id="实现思路"><a href="#实现思路" class="headerlink" title="实现思路"></a>实现思路</h2><p>本着实现一个简单的、轻量级的工具类的目的，通过传入一个任意 View 可以将其创建成可自由拖动的悬浮窗</p>
+<p><strong>悬浮一个 View </strong></p>
+<p>首先我们知道 View 能显示在屏幕上其实是间接通过 Window 管理的，那么我们就可以使用 WindowManager 来管理它，让它具备悬浮的属性，下面代码演示了通过 WindowManager 添加 Window 的过程，非常简单</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">final</span> Button mBtn = <span class="keyword">new</span> Button(<span class="keyword">this</span>);</span><br><span class="line">mBtn.setText(<span class="string">"悬浮按钮"</span>);</span><br><span class="line">mBtn.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</span><br><span class="line">        Toast.makeText(context,<span class="string">"click"</span>,Toast.LENGTH_SHORT).show();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"><span class="keyword">final</span> WindowManager.LayoutParams mLayoutParams = <span class="keyword">new</span> WindowManager.LayoutParams(WindowManager.LayoutParams.WRAP_CONTENT</span><br><span class="line">        ,WindowManager.LayoutParams.WRAP_CONTENT,<span class="number">0</span>,<span class="number">0</span>, PixelFormat.TRANSPARENT);</span><br><span class="line">mLayoutParams.flags = WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL</span><br><span class="line">        | WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE</span><br><span class="line">        | WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED;</span><br><span class="line">mLayoutParams.gravity = Gravity.LEFT | Gravity.TOP; <span class="comment">//view 处于屏幕的相对位置，注意这里必须是 LEFT &amp; TOP，因为 Android 设备屏幕坐标原点在左上角</span></span><br><span class="line">mLayoutParams.x = <span class="number">100</span>; <span class="comment">//距离屏幕左侧100px</span></span><br><span class="line">mLayoutParams.y = <span class="number">300</span>; <span class="comment">//距离屏幕上方300px</span></span><br><span class="line">mLayoutParams.type = WindowManager.LayoutParams.TYPE_SYSTEM_ALERT; <span class="comment">//指定 Window 类型为 TYPE_SYSTEM_ALERT，属于系统级别，就可以显示在系统屏幕上了</span></span><br><span class="line"><span class="keyword">final</span> WindowManager mWindowManager = getWindowManager();</span><br><span class="line">mWindowManager.addView(mBtn,mLayoutParams);</span><br></pre></td></tr></table></figure>
+<p>别忘了系统级窗口权限</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.SYSTEM_ALERT_WINDOW"</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+<p>效果如下</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/3551539-4e7453d1654b042f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p><strong>使其可以拖动</strong></p>
+<p>显然上面的 Button 只是能显示在系统屏幕上而已，并不能拖动，要使其能够拖动就要给它设置一个 View.OnTouchListener 来监听手指在屏幕上滑动的坐标然后根据这个坐标设置其位置，如下实现</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">mBtn.setOnTouchListener(<span class="keyword">new</span> View.OnTouchListener() &#123;</span><br><span class="line">    <span class="comment">//触摸点相对于view左上角的坐标</span></span><br><span class="line">    <span class="keyword">float</span> downX;</span><br><span class="line">    <span class="keyword">float</span> downY;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onTouch</span><span class="params">(View v, MotionEvent event)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//获取触摸点相对于屏幕左上角的坐标</span></span><br><span class="line">        <span class="keyword">float</span> rowX = event.getRawX();</span><br><span class="line">        <span class="keyword">float</span> rowY = event.getRawY() - getStatusBarHeight(context);</span><br><span class="line">        <span class="keyword">switch</span> (event.getAction()) &#123;</span><br><span class="line">            <span class="keyword">case</span> MotionEvent.ACTION_DOWN:</span><br><span class="line">                downX = event.getX();</span><br><span class="line">                downY = event.getY();</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> MotionEvent.ACTION_MOVE:</span><br><span class="line">                mLayoutParams.x = (<span class="keyword">int</span>) (rowX - downX);  <span class="comment">//计算当前触摸点相对于屏幕左上角的 X 轴位置</span></span><br><span class="line">                mLayoutParams.y = (<span class="keyword">int</span>) (rowY - downY);  <span class="comment">//计算当前触摸点相对于屏幕左上角的 Y 轴位置</span></span><br><span class="line">                mWindowManager.updateViewLayout(mBtn, mLayoutParams);  <span class="comment">//更新 Button 到相应位置</span></span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> MotionEvent.ACTION_UP:</span><br><span class="line">                  <span class="comment">//actionUp(event);</span></span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> MotionEvent.ACTION_OUTSIDE:</span><br><span class="line">                  <span class="comment">//actionOutSide(event);</span></span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">default</span>:</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p><strong>解决点击和滑动的事件冲突</strong></p>
+<p>现在这个 Button 虽然可以跟着你的手指移动了，但是你会发现当你拖动一段较小距离时会有很大几率响应它的 Click 事件，这显然不能接受，在拖动这个 Button 的整个过程中会依次触发 ACTION_DOWN、ACTION_MOVE、ACTION_MOVE、… 、ACTION_UP，当 ACTION_MOVE 被触发时 ACTION_DOWN 会被释放，之后松开手指触发 ACTION_UP 是不会响应 Click  事件的， Click  事件的响应条件是 ACTION_DOWN + ACTION_UP，所以当我们拖动一个很小的距离时很容易造成 ACTION_DOWN  与 ACTION_UP 的连续触发而响应了 Click 事件，尤其是在 DPI 较高的设备上，下面是一个根据最小偏移量来判断是否应该响应 Click 事件的一种方式</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">...</span><br><span class="line"><span class="comment">//拖动的最小偏移量</span></span><br><span class="line"><span class="keyword">int</span> MIN_OFFSET = <span class="number">5</span>;</span><br><span class="line"><span class="comment">//是否视为 click 事件</span></span><br><span class="line"><span class="keyword">boolean</span> isClick = <span class="keyword">false</span>;</span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onTouch</span><span class="params">(View v, MotionEvent event)</span> </span>&#123;</span><br><span class="line">    ...</span><br><span class="line">    <span class="keyword">switch</span> (event.getAction()) &#123;</span><br><span class="line">        <span class="keyword">case</span> MotionEvent.ACTION_DOWN:</span><br><span class="line">            isClick = <span class="keyword">true</span>;</span><br><span class="line">            ...</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> MotionEvent.ACTION_MOVE:</span><br><span class="line">            ...</span><br><span class="line">            <span class="comment">// 通过拖拽的距离是否超过最小偏移量来判断点击事件</span></span><br><span class="line">            <span class="keyword">if</span> (Math.abs((rowX - downX)) &gt; MIN_OFFSET &amp;&amp; Math.abs((rowY - downY)) &gt; MIN_OFFSET)&#123;</span><br><span class="line">                isClick = <span class="keyword">false</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                isClick = <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> MotionEvent.ACTION_UP:</span><br><span class="line">            <span class="keyword">if</span> (isClick)&#123;</span><br><span class="line">                <span class="comment">// 执行点击事件</span></span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">default</span>:</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>最终改进</strong></p>
+<p>上述方式固然可以解决冲突问题，但是点击事件被放在 ACTION_UP 之下，或需要整个接口在外面调用很不优雅，下面的解决办法是通过父级 View 进行拦截，也就是将所有传进来的 View 先放入一个 ViewGroup 中，给这个 ViewGroup  设置 View.OnTouchListener，重写这个 ViewGroup 的 onInterceptTouchEvent 方法，根据拖拽的意图让它决定是否拦截所有事件不向下传递，从根本上解决冲突，并且把设置 Window 的属性相关也集成进去，外界只需传入一个 View 即可，下面是 FloatWindowUtils 全部实现过程</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FloatWindowUtils</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> WindowManager.LayoutParams mLayoutParams;</span><br><span class="line">    <span class="keyword">private</span> WindowManager mWindowManager;</span><br><span class="line">    <span class="keyword">private</span> DisplayMetrics mDisplayMetrics;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//view 相对于屏幕触摸点的偏移量(一般仅减去Y轴状态栏高度)</span></span><br><span class="line">    <span class="keyword">int</span> offsetX;</span><br><span class="line">    <span class="keyword">int</span> offsetY;</span><br><span class="line">    <span class="comment">//触摸点相对于view左上角的坐标</span></span><br><span class="line">    <span class="keyword">float</span> downX;</span><br><span class="line">    <span class="keyword">float</span> downY;</span><br><span class="line">    <span class="comment">//触摸点相对于屏幕左上角的坐标</span></span><br><span class="line">    <span class="keyword">float</span> rowX;</span><br><span class="line">    <span class="keyword">float</span> rowY;</span><br><span class="line">    <span class="comment">//悬浮窗显示标记</span></span><br><span class="line">    <span class="keyword">boolean</span> isShowing;</span><br><span class="line">    <span class="comment">//拖动最小偏移量</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> MINIMUM_OFFSET = <span class="number">5</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Context mContext;</span><br><span class="line">    <span class="comment">//是否自动贴边</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">boolean</span> autoAlign;</span><br><span class="line">    <span class="comment">//是否模态窗口</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">boolean</span> modality;</span><br><span class="line">    <span class="comment">//是否可拖动</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">boolean</span> moveAble;</span><br><span class="line">    <span class="comment">//内部定义的View，专门处理事件拦截的父View</span></span><br><span class="line">    <span class="keyword">private</span> FloatView floatView;</span><br><span class="line">    <span class="comment">//外部传进来的需要悬浮的View</span></span><br><span class="line">    <span class="keyword">private</span> View contentView;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">FloatWindowUtils</span><span class="params">(Builder builder)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.mContext = builder.context;</span><br><span class="line">        <span class="keyword">this</span>.autoAlign = builder.autoAlign;</span><br><span class="line">        <span class="keyword">this</span>.modality = builder.modality;</span><br><span class="line">        <span class="keyword">this</span>.contentView = builder.contentView;</span><br><span class="line">        <span class="keyword">this</span>.moveAble = builder.moveAble;</span><br><span class="line"></span><br><span class="line">        initWindowManager();</span><br><span class="line">        initLayoutParams();</span><br><span class="line">        initFloatView();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initWindowManager</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        mWindowManager = (WindowManager) mContext.getSystemService(Context.WINDOW_SERVICE);</span><br><span class="line">        <span class="comment">//获取一个DisplayMetrics对象，该对象用来描述关于显示器的一些信息，例如其大小，密度和字体缩放。</span></span><br><span class="line">        mDisplayMetrics = <span class="keyword">new</span> DisplayMetrics();</span><br><span class="line">        mWindowManager.getDefaultDisplay().getMetrics(mDisplayMetrics);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initFloatView</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        floatView = <span class="keyword">new</span> FloatView(mContext);</span><br><span class="line">        <span class="keyword">if</span> (moveAble) &#123;</span><br><span class="line">            floatView.setOnTouchListener(<span class="keyword">new</span> WindowTouchListener());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initLayoutParams</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        mLayoutParams = <span class="keyword">new</span> WindowManager.LayoutParams();</span><br><span class="line">        mLayoutParams.flags = WindowManager.LayoutParams.FLAG_WATCH_OUTSIDE_TOUCH</span><br><span class="line">                | WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL</span><br><span class="line">                | WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE</span><br><span class="line">                | WindowManager.LayoutParams.FLAG_DIM_BEHIND;</span><br><span class="line">        <span class="keyword">if</span> (modality) &#123;</span><br><span class="line">            mLayoutParams.flags &amp;= ~WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL;</span><br><span class="line">            mLayoutParams.flags &amp;= ~WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE;</span><br><span class="line">        &#125;</span><br><span class="line">        mLayoutParams.height = LinearLayout.LayoutParams.WRAP_CONTENT;</span><br><span class="line">        mLayoutParams.width = LinearLayout.LayoutParams.WRAP_CONTENT;</span><br><span class="line">        mLayoutParams.gravity = Gravity.LEFT | Gravity.TOP;</span><br><span class="line">        mLayoutParams.format = PixelFormat.RGBA_8888;</span><br><span class="line">        <span class="comment">//此处mLayoutParams.type不建议使用TYPE_TOAST，因为在一些三方ROM中会出现拖动异常的问题，虽然它不需要权限</span></span><br><span class="line">        mLayoutParams.type = WindowManager.LayoutParams.TYPE_SYSTEM_ALERT;</span><br><span class="line">        <span class="comment">//悬浮窗背景明暗度0~1，数值越大背景越暗，只有在flags设置了WindowManager.LayoutParams.FLAG_DIM_BEHIND 这个属性才会生效</span></span><br><span class="line">        mLayoutParams.dimAmount = <span class="number">0.0f</span>;</span><br><span class="line">        <span class="comment">//悬浮窗透明度0~1，数值越大越不透明</span></span><br><span class="line">        mLayoutParams.alpha = <span class="number">0.8f</span>;</span><br><span class="line">        offsetX = <span class="number">0</span>;</span><br><span class="line">        offsetY = getStatusBarHeight(mContext);</span><br><span class="line">        <span class="comment">//设置初始位置</span></span><br><span class="line">        mLayoutParams.x = mDisplayMetrics.widthPixels - offsetX;</span><br><span class="line">        mLayoutParams.y = mDisplayMetrics.widthPixels*<span class="number">3</span>/<span class="number">4</span> - offsetY;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 将窗体添加到屏幕上</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">show</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (!isAppOps(mContext))&#123;</span><br><span class="line"><span class="comment">//            openOpsSettings(mContext);</span></span><br><span class="line"><span class="comment">//            Toast.makeText(mContext,"需要授权应用悬浮权限",Toast.LENGTH_SHORT).show();</span></span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (!isShowing()) &#123;</span><br><span class="line">            mWindowManager.addView(floatView, mLayoutParams);</span><br><span class="line">            isShowing = <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 悬浮窗是否正在显示</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> true if it's showing.</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">isShowing</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (floatView != <span class="keyword">null</span> &amp;&amp; floatView.getVisibility() == View.VISIBLE) &#123;</span><br><span class="line">            <span class="keyword">return</span> isShowing;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 打开悬浮窗设置页</span></span><br><span class="line"><span class="comment">     * 部分第三方ROM无法直接跳转可使用&#123;<span class="doctag">@link</span> #openAppSettings(Context)&#125;跳到应用详情页</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> context</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> true if it's open successful.</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">openOpsSettings</span><span class="params">(Context context)</span></span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            Intent intent = <span class="keyword">new</span> Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION, Uri.parse(<span class="string">"package:"</span> + context.getPackageName()));</span><br><span class="line">            context.startActivity(intent);</span><br><span class="line">        &#125;<span class="keyword">catch</span> (Exception e)&#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 打开应用详情页</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> context</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> true if it's open success.</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">openAppSettings</span><span class="params">(Context context)</span></span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            Intent intent = <span class="keyword">new</span> Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);</span><br><span class="line">            Uri uri = Uri.fromParts(<span class="string">"package"</span>, context.getPackageName(), <span class="keyword">null</span>);</span><br><span class="line">            intent.setData(uri);</span><br><span class="line">            context.startActivity(intent);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 判断 悬浮窗口权限是否打开</span></span><br><span class="line"><span class="comment">     * 由于android未提供直接跳转到悬浮窗设置页的api，此方法使用反射去查找相关函数进行跳转</span></span><br><span class="line"><span class="comment">     * 部分第三方ROM可能不适用</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> context</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> true 允许  false禁止</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">isAppOps</span><span class="params">(Context context)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            Object object = context.getSystemService(Context.APP_OPS_SERVICE);</span><br><span class="line">            <span class="keyword">if</span> (object == <span class="keyword">null</span>) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            Class localClass = object.getClass();</span><br><span class="line">            Class[] arrayOfClass = <span class="keyword">new</span> Class[<span class="number">3</span>];</span><br><span class="line">            arrayOfClass[<span class="number">0</span>] = Integer.TYPE;</span><br><span class="line">            arrayOfClass[<span class="number">1</span>] = Integer.TYPE;</span><br><span class="line">            arrayOfClass[<span class="number">2</span>] = String.class;</span><br><span class="line">            Method method = localClass.getMethod(<span class="string">"checkOp"</span>, arrayOfClass);</span><br><span class="line">            <span class="keyword">if</span> (method == <span class="keyword">null</span>) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            Object[] arrayOfObject1 = <span class="keyword">new</span> Object[<span class="number">3</span>];</span><br><span class="line">            arrayOfObject1[<span class="number">0</span>] = Integer.valueOf(<span class="number">24</span>);</span><br><span class="line">            arrayOfObject1[<span class="number">1</span>] = Integer.valueOf(Binder.getCallingUid());</span><br><span class="line">            arrayOfObject1[<span class="number">2</span>] = context.getPackageName();</span><br><span class="line">            <span class="keyword">int</span> m = ((Integer) method.invoke(object, arrayOfObject1)).intValue();</span><br><span class="line">            <span class="keyword">return</span> m == AppOpsManager.MODE_ALLOWED;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception ex) &#123;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 移除悬浮窗</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">remove</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (isShowing()) &#123;</span><br><span class="line">            floatView.removeView(contentView);</span><br><span class="line">            mWindowManager.removeView(floatView);</span><br><span class="line">            isShowing = <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 用于获取系统状态栏的高度。</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> 返回状态栏高度的像素值。</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">getStatusBarHeight</span><span class="params">(Context ctx)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> Identifier = ctx.getResources().getIdentifier(<span class="string">"status_bar_height"</span>,</span><br><span class="line">                <span class="string">"dimen"</span>, <span class="string">"android"</span>);</span><br><span class="line">        <span class="keyword">if</span> (Identifier &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> ctx.getResources().getDimensionPixelSize(Identifier);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">FloatView</span> <span class="keyword">extends</span> <span class="title">LinearLayout</span></span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//记录按下位置</span></span><br><span class="line">        <span class="keyword">int</span> interceptX=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> interceptY=<span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">FloatView</span><span class="params">(Context context)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">super</span>(context);</span><br><span class="line">            <span class="comment">//这里由于一个ViewGroup不能add一个已经有Parent的contentView,所以需要先判断contentView是否有Parent</span></span><br><span class="line">            <span class="comment">//如果有则需要将contentView先移除</span></span><br><span class="line">            <span class="keyword">if</span> (contentView.getParent()!=<span class="keyword">null</span>&amp;&amp;contentView.getParent() <span class="keyword">instanceof</span> ViewGroup)&#123;</span><br><span class="line">                ((ViewGroup) contentView.getParent()).removeView(contentView);</span><br><span class="line">            &#125;</span><br><span class="line">            addView(contentView);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * 解决点击与拖动冲突的关键代码</span></span><br><span class="line"><span class="comment">         * <span class="doctag">@param</span> ev</span></span><br><span class="line"><span class="comment">         * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onInterceptTouchEvent</span><span class="params">(MotionEvent ev)</span> </span>&#123;</span><br><span class="line">            <span class="comment">//此回调如果返回true则表示拦截TouchEvent由自己处理，false表示不拦截TouchEvent分发出去由子view处理</span></span><br><span class="line">            <span class="comment">//解决方案：如果是拖动父View则返回true调用自己的onTouch改变位置，是点击则返回false去响应子view的点击事件</span></span><br><span class="line">            <span class="keyword">boolean</span> isIntercept = <span class="keyword">false</span>;</span><br><span class="line">            <span class="keyword">switch</span> (ev.getAction())&#123;</span><br><span class="line">                <span class="keyword">case</span> MotionEvent.ACTION_DOWN:</span><br><span class="line">                    interceptX = (<span class="keyword">int</span>) ev.getX();</span><br><span class="line">                    interceptY = (<span class="keyword">int</span>) ev.getY();</span><br><span class="line">                    downX = ev.getX();</span><br><span class="line">                    downY = ev.getY();</span><br><span class="line">                    isIntercept = <span class="keyword">false</span>;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> MotionEvent.ACTION_MOVE:</span><br><span class="line">                    <span class="comment">//在一些dpi较高的设备上点击view很容易触发 ACTION_MOVE，所以此处做一个过滤</span></span><br><span class="line">                    <span class="keyword">if</span> (Math.abs(ev.getX()-interceptX)&gt;MINIMUM_OFFSET&amp;&amp;Math.abs(ev.getY()-interceptY)&gt;MINIMUM_OFFSET)&#123;</span><br><span class="line">                        isIntercept = <span class="keyword">true</span>;</span><br><span class="line">                    &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                        isIntercept = <span class="keyword">false</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> MotionEvent.ACTION_UP:</span><br><span class="line">                    isIntercept = <span class="keyword">false</span>;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">default</span>:</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> isIntercept;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">WindowTouchListener</span> <span class="keyword">implements</span> <span class="title">View</span>.<span class="title">OnTouchListener</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onTouch</span><span class="params">(View v, MotionEvent event)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">            <span class="comment">//获取触摸点相对于屏幕左上角的坐标</span></span><br><span class="line">            rowX = event.getRawX();</span><br><span class="line">            rowY = event.getRawY() - getStatusBarHeight(mContext);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">switch</span> (event.getAction()) &#123;</span><br><span class="line">                <span class="keyword">case</span> MotionEvent.ACTION_DOWN:</span><br><span class="line">                    actionDown(event);</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> MotionEvent.ACTION_MOVE:</span><br><span class="line">                    actionMove(event);</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> MotionEvent.ACTION_UP:</span><br><span class="line">                    actionUp(event);</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> MotionEvent.ACTION_OUTSIDE:</span><br><span class="line">                    actionOutSide(event);</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">default</span>:</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * 手指点击窗口外的事件</span></span><br><span class="line"><span class="comment">         *</span></span><br><span class="line"><span class="comment">         * <span class="doctag">@param</span> event</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">actionOutSide</span><span class="params">(MotionEvent event)</span> </span>&#123;</span><br><span class="line">            <span class="comment">//由于我们在layoutParams中添加了FLAG_WATCH_OUTSIDE_TOUCH标记，那么点击悬浮窗之外时此事件就会被响应</span></span><br><span class="line">            <span class="comment">//这里可以用来扩展点击悬浮窗外部响应事件</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * 手指抬起事件</span></span><br><span class="line"><span class="comment">         *</span></span><br><span class="line"><span class="comment">         * <span class="doctag">@param</span> event</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">actionUp</span><span class="params">(MotionEvent event)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">if</span> (autoAlign) &#123;</span><br><span class="line">                autoAlign();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * 拖动事件</span></span><br><span class="line"><span class="comment">         *</span></span><br><span class="line"><span class="comment">         * <span class="doctag">@param</span> event</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">actionMove</span><span class="params">(MotionEvent event)</span> </span>&#123;</span><br><span class="line">            <span class="comment">//拖动事件下一直计算坐标 然后更新悬浮窗位置</span></span><br><span class="line">            updateLocation((rowX - downX),(rowY - downY));</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * 更新位置</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">updateLocation</span><span class="params">(<span class="keyword">float</span> x, <span class="keyword">float</span> y)</span> </span>&#123;</span><br><span class="line">            mLayoutParams.x = (<span class="keyword">int</span>) x;</span><br><span class="line">            mLayoutParams.y = (<span class="keyword">int</span>) y;</span><br><span class="line">            mWindowManager.updateViewLayout(floatView, mLayoutParams);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * 手指按下事件</span></span><br><span class="line"><span class="comment">         *</span></span><br><span class="line"><span class="comment">         * <span class="doctag">@param</span> event</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">actionDown</span><span class="params">(MotionEvent event)</span> </span>&#123;</span><br><span class="line"><span class="comment">//            downX = event.getX();</span></span><br><span class="line"><span class="comment">//            downY = event.getY();</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * 自动贴边</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">autoAlign</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">float</span> fromX = mLayoutParams.x;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (rowX &lt;= mDisplayMetrics.widthPixels / <span class="number">2</span>) &#123;</span><br><span class="line">                mLayoutParams.x = <span class="number">0</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                mLayoutParams.x = mDisplayMetrics.widthPixels;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="comment">//这里使用ValueAnimator来平滑计算起始X坐标到结束X坐标之间的值，并更新悬浮窗位置</span></span><br><span class="line">            ValueAnimator animator = ValueAnimator.ofFloat(fromX, mLayoutParams.x);</span><br><span class="line">            animator.setDuration(<span class="number">300</span>);</span><br><span class="line">            animator.addUpdateListener(<span class="keyword">new</span> ValueAnimator.AnimatorUpdateListener() &#123;</span><br><span class="line">                <span class="meta">@Override</span></span><br><span class="line">                <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onAnimationUpdate</span><span class="params">(ValueAnimator animation)</span> </span>&#123;</span><br><span class="line">                    <span class="comment">//这里会返回fromX ~ mLayoutParams.x之间经过计算的过渡值</span></span><br><span class="line">                    <span class="keyword">float</span> toX = (<span class="keyword">float</span>) animation.getAnimatedValue();</span><br><span class="line">                    <span class="comment">//我们直接使用这个值来更新悬浮窗位置</span></span><br><span class="line">                    updateLocation(toX, mLayoutParams.y);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;);</span><br><span class="line">            animator.start();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Builder</span> </span>&#123;</span><br><span class="line">        <span class="keyword">private</span> Context context;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">boolean</span> autoAlign;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">boolean</span> modality;</span><br><span class="line">        <span class="keyword">private</span> View contentView;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">boolean</span> moveAble;</span><br><span class="line"></span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * <span class="doctag">@param</span> context 上下文环境</span></span><br><span class="line"><span class="comment">         * <span class="doctag">@param</span> contentView  需要悬浮的视图</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">Builder</span><span class="params">(Context context, @NonNull View contentView)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.context = context.getApplicationContext();</span><br><span class="line">            <span class="keyword">this</span>.contentView = contentView;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * 是否自动贴边</span></span><br><span class="line"><span class="comment">         * <span class="doctag">@param</span> autoAlign</span></span><br><span class="line"><span class="comment">         * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> Builder <span class="title">setAutoAlign</span><span class="params">(<span class="keyword">boolean</span> autoAlign)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.autoAlign = autoAlign;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * 是否模态窗口（事件是否可穿透当前窗口）</span></span><br><span class="line"><span class="comment">         * <span class="doctag">@param</span> modality</span></span><br><span class="line"><span class="comment">         * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> Builder <span class="title">setModality</span><span class="params">(<span class="keyword">boolean</span> modality)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.modality = modality;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * 是否可拖动</span></span><br><span class="line"><span class="comment">         * <span class="doctag">@param</span> moveAble</span></span><br><span class="line"><span class="comment">         * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> Builder <span class="title">setMoveAble</span><span class="params">(<span class="keyword">boolean</span> moveAble)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.moveAble = moveAble;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> FloatWindowUtils <span class="title">create</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> FloatWindowUtils(<span class="keyword">this</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>调用方式</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Button mBtn = new Button(this);</span><br><span class="line">mBtn.setText(&quot;悬浮按钮&quot;);</span><br><span class="line">mBtn.setOnClickListener(new View.OnClickListener() &#123;</span><br><span class="line">    @Override</span><br><span class="line">    public void onClick(View v) &#123;</span><br><span class="line">        Toast.makeText(context,&quot;click&quot;,Toast.LENGTH_SHORT).show();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line">new FloatWindowUtils.Builder(context,mBtn)</span><br><span class="line">        .setAutoAlign(true) //自动贴边</span><br><span class="line">        .setModality(false) //模态窗体</span><br><span class="line">        .setMoveAble(true) //可拖动</span><br><span class="line">        .create()</span><br><span class="line">        .show();</span><br></pre></td></tr></table></figure>
+<h2 id="Demo-源码"><a href="#Demo-源码" class="headerlink" title="Demo 源码"></a>Demo 源码</h2><p><a href="https://github.com/lyllll000/FloatWindowUtils" target="_blank" rel="noopener">GitHub</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    skyrin
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://skyrin.cc/2017/05/31/float-window-utils/" title="FloatWindowUtils 实现及事件冲突解决详解">http://skyrin.cc/2017/05/31/float-window-utils/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Android/" rel="tag"># Android</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/05/09/android-fileuriexposedexception-resolve/" rel="next" title="Android 7.0 FileUriExposedException 的处理">
+                <i class="fa fa-chevron-left"></i> Android 7.0 FileUriExposedException 的处理
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/11/16/gradle-file-operation/" rel="prev" title="Gradle 的文件操作">
+                Gradle 的文件操作 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+  <div class="bdsharebuttonbox">
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
+    <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a class="bds_count" data-cmd="count"></a>
+  </div>
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "2",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "share": {
+        "bdSize": "16",
+        "bdStyle": "0"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zMzExNC85Njcz"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.gif"
+                alt="skyrin" />
+            
+              <p class="site-author-name" itemprop="name">skyrin</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:cnskyrin@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.jianshu.com/u/32f1afa17c58" target="_blank" title="简书">
+                      
+                        <i class="fa fa-fw fa-globe"></i>简书</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://www.xiami.com/collect/360454952" target="_blank" title="音乐">
+                      
+                        <i class="fa fa-fw fa-music"></i>音乐</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概述"><span class="nav-text">概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#需要了解的"><span class="nav-text">需要了解的</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最终效果"><span class="nav-text">最终效果</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实现思路"><span class="nav-text">实现思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Demo-源码"><span class="nav-text">Demo 源码</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">skyrin</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+  <div class="footer-custom">Hosted by <a target="_blank" href="https://pages.coding.me" style="font-weight:bold">Coding Pages</a></div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+  <script type="text/javascript" src="/js/src/exturl.js?v=5.1.4"></script>
+
+
+</body>
+</html>
