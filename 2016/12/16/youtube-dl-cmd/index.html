@@ -113,7 +113,7 @@
 <meta property="og:site_name" content="Skyrin&#39;s Blog">
 <meta property="og:description" content="概述youtube-dl 命令参数简译">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-01-16T09:23:49.523Z">
+<meta property="og:updated_time" content="2018-01-16T09:26:34.251Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="youtube-dl CMD">
 <meta name="twitter:description" content="概述youtube-dl 命令参数简译">
@@ -613,13 +613,9 @@ album_artist （字符串）：           专辑中出现的所有艺术家列�
 disc_number （数字）：              轨道所属的光盘或其他物理介质的编号
 release_year （数字）：             发行专辑时的年（YYYY）
 </code></pre><p>在输出模板中引用的每个上述序列都将被与序列名称对应的实际值替换。请注意，某些序列不能保证存在，因为它们依赖于特定提取器获得的元数据。这样的序列将被替换为NA。</p>
-<p>例如，对于-o %(title)s-%(id)s.%(ext)s带有标题youtube-dl test video和ID 的mp4视频BaW_jenozKcj，这将导致在youtube-dl test video-BaW_jenozKcj.mp4当前目录中创建一个文件。</p>
-<p>对于数字序列，您可以使用与数字相关的格式，例如，%(view_count)05d将导致视图计数的字符串填充最多5个字符的零，如in 00042。</p>
-<p>输出模板还可以包含任意的分层路径，例如-o ‘%(playlist)s/%(playlist_index)s - %(title)s.%(ext)s’，这将导致下载与该路径模板相对应的目录中的每个视频。任何丢失的目录将自动为您创建。</p>
-<p>要在输出模板使用使用％的文字%%。输出到标准输出使用-o -。</p>
-<p>当前的默认模板是%(title)s-%(id)s.%(ext)s。</p>
-<p>在某些情况下，您不需要特殊字符（如中，空格或＆），例如通过8位不安全通道将下载的文件名传送到Windows系统或文件名时。在这些情况下，添加–restrict-filenames标志以获得较短的标题：</p>
-<p>输出模板和Windows批处理文件</p>
+<p>例如，对于-o %(title)s-%(id)s.%(ext)s带有标题youtube-dl test video和ID 的mp4视频BaW_jenozKcj，这将导致在youtube-dl test video-BaW_jenozKcj.mp4当前目录中创建一个文件。<br>对于数字序列，您可以使用与数字相关的格式，例如，%(view_count)05d将导致视图计数的字符串填充最多5个字符的零，如in 00042。</p>
+<p>输出模板还可以包含任意的分层路径，例如-o ‘%(playlist)s/%(playlist_index)s - %(title)s.%(ext)s’，这将导致下载与该路径模板相对应的目录中的每个视频。任何丢失的目录将自动为您创建。<br>要在输出模板使用使用％的文字%%。输出到标准输出使用-o -。<br>当前的默认模板是%(title)s-%(id)s.%(ext)s。</p>
+<p>在某些情况下，您不需要特殊字符（如中，空格或＆），例如通过8位不安全通道将下载的文件名传送到Windows系统或文件名时。在这些情况下，添加–restrict-filenames标志以获得较短的标题：<br>输出模板和Windows批处理文件</p>
 <p>如果您在Windows批处理文件中使用输出模板，那么您必须%通过加倍来避免普通的百分号字符（），所以-o “%(title)s-%(id)s.%(ext)s”应该成为-o “%%(title)s-%%(id)s.%%(ext)s”。但是你不应该碰到%不是普通字符的东西，例如扩展的环境变量应该保持不变-o “C:\%HOMEPATH%\Desktop\%%(title)s.%%(ext)s”。</p>
 
       
