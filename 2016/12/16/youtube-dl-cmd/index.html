@@ -94,7 +94,7 @@
 
 
 
-  <meta name="keywords" content="Linux," />
+  <meta name="keywords" content="Tools," />
 
 
 
@@ -105,20 +105,18 @@
 
 
 
-<meta name="description" content="概述术语虚拟主机指的是在单一机器上运行多个网站 (例如 company1.example.com 和 company2.example.com) 。 虚拟主机可以“基于 IP”，即每个 IP 一个站点； 或者“基于名称”， 即每个 IP 多个站点。这些站点运行在同一物理服务器上的事实不会明显的透漏给最终用户。">
-<meta name="keywords" content="Linux">
+<meta name="description" content="概述youtube-dl 命令参数简译">
+<meta name="keywords" content="Tools">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Apache2 创建虚拟主机">
-<meta property="og:url" content="http://skyrin.cc/2018/01/08/apache2-to-create-a-virtual-host/index.html">
+<meta property="og:title" content="youtube-dl CMD">
+<meta property="og:url" content="http://skyrin.cc/2016/12/16/youtube-dl-cmd/index.html">
 <meta property="og:site_name" content="Skyrin&#39;s Blog">
-<meta property="og:description" content="概述术语虚拟主机指的是在单一机器上运行多个网站 (例如 company1.example.com 和 company2.example.com) 。 虚拟主机可以“基于 IP”，即每个 IP 一个站点； 或者“基于名称”， 即每个 IP 多个站点。这些站点运行在同一物理服务器上的事实不会明显的透漏给最终用户。">
+<meta property="og:description" content="概述youtube-dl 命令参数简译">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/3551539-33c56a7656d2c895.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2018-01-16T01:54:37.681Z">
+<meta property="og:updated_time" content="2018-01-16T05:55:27.089Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Apache2 创建虚拟主机">
-<meta name="twitter:description" content="概述术语虚拟主机指的是在单一机器上运行多个网站 (例如 company1.example.com 和 company2.example.com) 。 虚拟主机可以“基于 IP”，即每个 IP 一个站点； 或者“基于名称”， 即每个 IP 多个站点。这些站点运行在同一物理服务器上的事实不会明显的透漏给最终用户。">
-<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/3551539-33c56a7656d2c895.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:title" content="youtube-dl CMD">
+<meta name="twitter:description" content="概述youtube-dl 命令参数简译">
 
 
 
@@ -148,13 +146,13 @@
 
 
 
-  <link rel="canonical" href="http://skyrin.cc/2018/01/08/apache2-to-create-a-virtual-host/"/>
+  <link rel="canonical" href="http://skyrin.cc/2016/12/16/youtube-dl-cmd/"/>
 
 
 
 
 
-  <title>Apache2 创建虚拟主机 | Skyrin's Blog</title>
+  <title>youtube-dl CMD | Skyrin's Blog</title>
   
 
 
@@ -315,7 +313,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://skyrin.cc/2018/01/08/apache2-to-create-a-virtual-host/">
+    <link itemprop="mainEntityOfPage" href="http://skyrin.cc/2016/12/16/youtube-dl-cmd/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="skyrin">
@@ -332,7 +330,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Apache2 创建虚拟主机</h1>
+          <h1 class="post-title" itemprop="name headline">youtube-dl CMD</h1>
         
 
         <div class="post-meta">
@@ -344,8 +342,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-08T09:36:42+08:00">
-                2018-01-08
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-12-16T13:51:17+08:00">
+                2016-12-16
               </time>
             
 
@@ -354,28 +352,6 @@
             
           </span>
 
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -404,121 +380,162 @@
       
 
       
-        <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>术语<strong>虚拟主机</strong>指的是在单一机器上运行多个网站 (例如 company1.example.com 和 company2.example.com) 。 虚拟主机可以“基于 IP”，即每个 IP 一个站点； 或者“基于名称”， 即每个 IP 多个站点。这些站点运行在同一物理服务器上的事实不会明显的透漏给最终用户。<br><a id="more"></a></p>
-<h2 id="基础概念"><a href="#基础概念" class="headerlink" title="基础概念"></a>基础概念</h2><h3 id="虚拟主机"><a href="#虚拟主机" class="headerlink" title="虚拟主机"></a>虚拟主机</h3><p>Apache 是第一个支持基于 IP 的虚拟主机的服务器。 Apache 版本 1.1 和更新的版本同时支持基于 IP 和基于名称的虚拟主机。 基于名称的虚拟主机有时候称为基于主机或非 IP 的虚拟主机.</p>
-<p>以下解释是在 Apache 中支持虚拟主机的所有详细信息的文档页面列表。</p>
-<p><strong>虚拟主机支持的配置</strong></p>
-<ul>
-<li><a href="http://httpd.apache.org/docs/2.4/vhosts/name-based.html" target="_blank" rel="noopener">基于名称的虚拟主机</a> (每个 IP 多个站点)</li>
-<li><a href="http://httpd.apache.org/docs/2.4/vhosts/ip-based.html" target="_blank" rel="noopener">基于 IP 的虚拟主机</a> (每个 IP 一个站点)</li>
-<li><a href="http://httpd.apache.org/docs/2.4/vhosts/examples.html" target="_blank" rel="noopener">虚拟主机样例</a></li>
-<li><a href="http://httpd.apache.org/docs/2.4/vhosts/fd-limits.html" target="_blank" rel="noopener">文件句柄限制</a> (应用于日志文件太多)</li>
-<li><a href="http://httpd.apache.org/docs/2.4/vhosts/mass.html" target="_blank" rel="noopener">动态配置的大规模虚拟主机</a></li>
-<li><a href="http://httpd.apache.org/docs/2.4/vhosts/details.html" target="_blank" rel="noopener">虚拟主机匹配的深入讨论</a></li>
-</ul>
-<p><strong>配置指令</strong></p>
-<ul>
-<li><a href="http://httpd.apache.org/docs/2.4/mod/core.html#virtualhost" target="_blank" rel="noopener">&lt;VirtualHost&gt;</a></li>
-<li><a href="http://httpd.apache.org/docs/2.4/mod/core.html#servername" target="_blank" rel="noopener">ServerName</a></li>
-<li><a href="http://httpd.apache.org/docs/2.4/mod/core.html#serveralias" target="_blank" rel="noopener">ServerAlias</a></li>
-<li><a href="http://httpd.apache.org/docs/2.4/mod/core.html#serverpath" target="_blank" rel="noopener">ServerPath</a></li>
-</ul>
-<h3 id="配置-Apache-HTTP-Server-侦听特定端口和地址"><a href="#配置-Apache-HTTP-Server-侦听特定端口和地址" class="headerlink" title="配置 Apache HTTP Server 侦听特定端口和地址"></a>配置 Apache HTTP Server 侦听特定端口和地址</h3><table>
-<thead>
-<tr>
-<th style="text-align:left">相关模块</th>
-<th style="text-align:left">相关指令</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left"><a href="http://httpd.apache.org/docs/2.4/mod/core.html" target="_blank" rel="noopener">core</a></td>
-<td style="text-align:left"><a href="http://httpd.apache.org/docs/2.4/mod/core.html#virtualhost" target="_blank" rel="noopener">&lt;VirtualHost&gt;</a></td>
-</tr>
-<tr>
-<td style="text-align:left"><a href="http://httpd.apache.org/docs/2.4/mod/mpm_common.html" target="_blank" rel="noopener">mpm_common</a></td>
-<td style="text-align:left"><a href="http://httpd.apache.org/docs/2.4/mod/mpm_common.html#listen" target="_blank" rel="noopener">Listen</a></td>
-</tr>
-</tbody>
-</table>
-<p>当httpd启动时，它绑定到本地机器上的一些端口和地址，并等待传入​​的请求。默认情况下，它监听机器上的所有地址。但是，可能需要通知您在特定的端口上进行监听，或者只监听选定的地址或两者的组合。这通常与虚拟主机功能相结合， 虚拟主机功能决定了如何 httpd响应不同的IP地址，主机名和端口。</p>
-<p>该Listen 指令告诉服务器仅接受指定端口或地址和端口组合上的传入请求。如果在Listen 指令中仅指定一个端口号，则服务器将侦听所有接口上的给定端口。如果IP地址和端口一样，服务器将监听给定的端口和接口。Listen可以使用多个指令来指定多个地址和端口进行侦听。服务器将响应来自任何列出的地址和端口的请求。</p>
-<p>例如，使服务器接收所有地址的 80、8000 端口请求：</p>
-<pre><code>Listen 80
-Listen 8000
-</code></pre><p>使服务器接收指定地址的 80、8000 端口请求：</p>
-<pre><code>Listen 192.0.2.1:80
-Listen 192.0.2.5:8000
-</code></pre><p><strong>用 Listen 指定协议</strong></p>
-<p>大多数 Listen 配置不需要可选的第二协议参数。如果未指定，https 协议则是端口 443 的默认值，http 协议为所有其他端口默认值。该协议用于确定哪个模块应该处理请求，以及使用该 AcceptFilter 指令应用协议特定的优化。</p>
-<p>如果您在非标准端口上运行，则只需设置协议。例如，使用 https 协议在端口 8443 上运行一个站点：   </p>
-<pre><code>Listen 192.170.2.1:8443 https
-</code></pre><p><strong>Listen 与虚拟主机是如何协同工作的</strong></p>
-<p>Listen 指令不实现虚拟主机 - 它只告诉主服务器要监听的地址和端口。如果不使用<a href="http://httpd.apache.org/docs/2.4/mod/core.html#virtualhost" target="_blank" rel="noopener">&lt;VirtualHost&gt;</a> 指令，则服务器对于所有接受的请求将以相同的方式处理。但是，<a href="http://httpd.apache.org/docs/2.4/mod/core.html#virtualhost" target="_blank" rel="noopener">&lt;VirtualHost&gt;</a> 可以用来为一个或多个地址或端口指定不同的行为。要实现VirtualHost，服务器必须先被告知要使用的地址和端口。然后<a href="http://httpd.apache.org/docs/2.4/mod/core.html#virtualhost" target="_blank" rel="noopener">&lt;VirtualHost&gt;</a>为指定的地址和端口创建一个配置来设置这个虚拟主机的行为。请注意，如果<a href="http://httpd.apache.org/docs/2.4/mod/core.html#virtualhost" target="_blank" rel="noopener">&lt;VirtualHost&gt;</a>设置为服务器未侦听的地址和端口，则无法访问。</p>
-<h2 id="配置虚拟主机"><a href="#配置虚拟主机" class="headerlink" title="配置虚拟主机"></a>配置虚拟主机</h2><p><strong>上传站点到服务器</strong></p>
-<p>Apache 站点根目录位于 <code>/var/www/</code> ，新上传站点应位于 <code>www</code> 目录下，站点目录命名规则推荐使用 <code>domain-port</code></p>
-<p>创建站点目录</p>
-<pre><code>$ cd /var/www
-</code></pre><p>$ mkdir domain-7777</p>
-<p>上传请注意 <code>index.html</code> 应位于 <code>domain-7777</code> 目录</p>
-<p><strong>创建虚拟主机配置文件</strong></p>
-<pre><code>$ cd /etc/apache2/sites-available/
-</code></pre><p>$ vim 7777-ssl.conf</p>
-<p>输入如下配置并保存</p>
-<pre><code>Listen 7777
-&lt;IfModule mod_ssl.c&gt;
-&lt;VirtualHost *:7777&gt;
-    # The ServerName directive sets the request scheme, hostname and port that
-    # the server uses to identify itself. This is used when creating
-    # redirection URLs. In the context of virtual hosts, the ServerName
-    # specifies what hostname must appear in the request&apos;s Host: header to
-    # match this virtual host. For the default virtual host (this file) this
-    # value is not decisive as it is used as a last resort host regardless.
-    # However, you must set it for any further virtual host explicitly.
-    #ServerName www.example.com
-
-    ServerAdmin webmaster@localhost
-    ServerName rak.example.com
-    DocumentRoot /var/www/domain-7777
-
-    # Available loglevels: trace8, ..., trace1, debug, info, notice, warn,
-    # error, crit, alert, emerg.
-    # It is also possible to configure the loglevel for particular
-    # modules, e.g.
-    #LogLevel info ssl:warn
-
-    ErrorLog ${APACHE_LOG_DIR}/error.log
-    CustomLog ${APACHE_LOG_DIR}/access.log combined
-
-    # For most configuration files from conf-available/, which are
-    # enabled or disabled at a global level, it is possible to
-    # include a line for only one particular virtual host. For example the
-    # following line enables the CGI configuration for this host only
-    # after it has been globally disabled with &quot;a2disconf&quot;.
-    #Include conf-available/serve-cgi-bin.conf
-
-    SSLCertificateFile /etc/letsencrypt/live/rak.example.com/cert.pem
-    SSLCertificateKeyFile /etc/letsencrypt/live/rak.example.com/privkey.pem
-    Include /etc/letsencrypt/options-ssl-apache.conf
-    SSLCertificateChainFile /etc/letsencrypt/live/rak.example.com/chain.pem
-&lt;/VirtualHost&gt;
-&lt;/IfModule&gt;
-</code></pre><p><strong>使 7777-ssl.conf 配置生效</strong></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/3551539-33c56a7656d2c895.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<p>Apache 配置文件默认放在 <code>-available</code> 后缀的目录下，<code>-enabled</code> 后缀目录下放的是配置文件的引用，而 Apache 服务启动时只会加载 <code>-enabled</code> 后缀目录下的引用；Apache 这么做的目的是为了便于配置文件的管理，比如你要关闭一个虚拟主机，只需删除<code>-enabled</code> 后缀目录下相关虚拟主机的配置引用即可，而不必删除此虚拟主机配置文件本身，需要再次启动此虚拟主机时，只需要再次添加此虚拟主机相应配置文件的引用到 <code>-enabled</code> 后缀目录下即可</p>
-<p>所以，这里除了创建 7777-ssl.conf 配置文件，还需要将其引用到 sites-enabled/ 下</p>
-<pre><code>$ ln -s /etc/apache2/site-available/7777-ssl.conf /etc/apache2/site-enabled/7777-ssl.conf
-</code></pre><p>使用 <code>a2ensite</code> 命令启动虚拟主机，使用 <code>a2dissite</code> 命令停止虚拟主机</p>
-<pre><code>$ a2ensite 7777-ssl.conf
-</code></pre><p>$ service apache2 reload</p>
-<p>检查端口 7777 是否正常被侦听</p>
-<pre><code>$ netstat -a | grep &apos;:7777&apos;
-</code></pre><p>正常状态会查到如下结果</p>
-<pre><code>tcp        0      0 *:7777                  *:*                     LISTEN  
-</code></pre><p>如果没有结果，请尝试重启 Apache 服务器</p>
-<pre><code>$ service apache2 restart
-</code></pre><p>现在，输入 <a href="https://rak.example.com:7777" target="_blank" rel="noopener">https://rak.example.com:7777</a> 即可访问位于<code>/var/www/domain-7777/</code>下的站点了</p>
-
+        <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>youtube-dl 命令参数简译</p>
+<a id="more"></a>
+<h2 id="Usage-youtube-dl-OPTIONS-URL-URL…"><a href="#Usage-youtube-dl-OPTIONS-URL-URL…" class="headerlink" title="Usage: youtube-dl [OPTIONS] URL [URL…]"></a>Usage: youtube-dl [OPTIONS] URL [URL…]</h2><h2 id="Options"><a href="#Options" class="headerlink" title="Options:"></a>Options:</h2><h3 id="通用选项"><a href="#通用选项" class="headerlink" title="通用选项:"></a>通用选项:</h3><pre><code>-h, --help                       打印帮助文档
+--version                        打印版本信息
+-U, --update                     更新到最新版(需要权限)
+-i, --ignore-errors              遇到下载错误时跳过
+--abort-on-error                 遇到下载错误时终止
+--dump-user-agent                显示当前使用的浏览器(User-agent)
+--list-extractors                列出所有的提取器(支持的网站)
+--extractor-descriptions         同上
+--force-generic-extractor        强制使用通用提取器下载
+--default-search PREFIX          使用此前缀补充不完整的URLs，例如：&quot;ytsearch2 yt-dl&quot; 从youtube搜索并下载两个关于yt-dl视频. 使用&quot;auto&quot;youtube-dl就会猜一个，一般效果等价于&quot;ytsearch&quot;(&quot;auto_warning&quot;猜测时加入警告).我已知支持的PREFIX：ytsearch (youtube), ytsearchdate (youtube), yvsearch (yahoo videos), gvsearch (google videos)
+--ignore-config                  不读取配置文件，当时用了全局配置文件/etc/youtube-dl.conf:不再读取 ~/.config/youtube-dl/config (%APPDATA%/youtube-dl/config.txt on Windows)
+--config-location PATH           使用指定路径下的配置文件
+--flat-playlist                  列出列表视频但不下载
+--mark-watched                   标记看过此视频 (YouTube only)
+--no-mark-watched                不标记看过此视频 (YouTube only)
+--no-color                       打印到屏幕上的代码不带色
+</code></pre><h3 id="网络选项"><a href="#网络选项" class="headerlink" title="网络选项:"></a>网络选项:</h3><pre><code>--proxy URL                      使用HTTP/HTTPS/SOCKS协议的代理.如：socks5://127.0.0.1:1080/.
+--socket-timeout SECONDS         放弃连接前等待时间
+--source-address IP              绑定的客户端IP地址
+-4, --force-ipv4                 所有连接通过IPv4
+-6, --force-ipv6                 所有连接通过IPv6
+</code></pre><h3 id="地理限制"><a href="#地理限制" class="headerlink" title="地理限制:"></a>地理限制:</h3><pre><code>--geo-verification-proxy URL     使用此代理地址测试一些有地理限制的地址
+--geo-bypass                     绕过地理限制通过伪装X-Forwarded-For HTTP头部的客户端ip (实验)
+--no-geo-bypass                  不 绕过地理限制通过伪装X-Forwarded-For HTTP头部的客户端ip (实验)
+--geo-bypass-country CODE        强制绕过地理限制通过提供准确的ISO 3166-2标准的国别代码(实验) 注：以上三个实验参数实测未成功
+</code></pre><h3 id="视频选择"><a href="#视频选择" class="headerlink" title="视频选择:"></a>视频选择:</h3><pre><code>--playlist-start NUMBER          指定列表中开始下载的视频(默认为1)
+--playlist-end NUMBER            指定列表中结束的视频(默认为last)
+--playlist-items ITEM_SPEC       指定列表中要下载的视频项目编号.如：&quot;--playlist-items 1,2,5,8&quot;或&quot;--playlist-items 1-3,7,10-13&quot;
+--match-title REGEX              下载标题匹配的视频(正则表达式或区分大小写的字符串)
+--reject-title REGEX             跳过下载标题匹配的视频(正则表达式或区分大小写的字符串)
+--max-downloads NUMBER           下载NUMBER个视频后停止
+--min-filesize SIZE              不下载小于SIZE的视频(e.g. 50k or 44.6m)
+--max-filesize SIZE              不下载大于SIZE的视频(e.g. 50k or 44.6m)
+--date DATE                      仅下载上传日期在指定日期的视频
+--datebefore DATE                仅下载上传日期在指定日期或之前的视频 (i.e. inclusive)
+--dateafter DATE                 仅下载上传日期在指定日期或之后的视频 (i.e. inclusive)
+--min-views COUNT                不下载观影数小于指定值的视频
+--max-views COUNT                不下载观影数大于指定值的视频
+--match-filter FILTER            通用视频过滤器. Specify any key (see help for -o for a list of available keys) to match if the key is present, !key to check if the key is not present, key &gt; NUMBER (like &quot;comment_count &gt; 12&quot;, also works with &gt;=, &lt;, &lt;=, !=, =) to compare against a number,key = ‘LITERAL‘ (like &quot;uploader = ‘Mike Smith‘&quot;, also works with !=) to match against a string literal and &amp; to require multiple matches. Values which are not known are excluded unless you put a question mark (?) after the operator. For example, to only match videos that have been liked more than 100 times and disliked less than 50 times (or the dislike functionality is not available at the given service), but who also have a description, use --match-filter &quot;like_count &gt; 100 &amp; dislike_count &lt;? 50 &amp; description&quot; .
+--no-playlist                    当视频链接到一个视频和一个播放列表时，仅下载视频
+--yes-playlist                   当视频链接到一个视频和一个播放列表时，下载视频和播放列表
+--age-limit YEARS                下载合适上传年限的视频
+--download-archive FILE          仅下载档案文件中未列出的影片，已下载的记录ID
+--include-ads                    同时下载广告(实验)
+</code></pre><h3 id="下载选项"><a href="#下载选项" class="headerlink" title="下载选项:"></a>下载选项:</h3><pre><code>-r, --limit-rate RATE            最大bps (e.g. 50K or 4.2M)
+-R, --retries RETRIES            重试次数 (默认10), or &quot;infinite&quot;.
+--fragment-retries RETRIES       一个分段的最大重试次数(default is 10), or &quot;infinite&quot; (DASH, hlsnative and ISM)
+--skip-unavailable-fragments     跳过不可用分段(DASH, hlsnative and ISM)
+--abort-on-unavailable-fragment  放弃某个分段当不可获取时
+--keep-fragments                 下载完成后，将下载的片段保存在磁盘上; 片段默认被删除
+--buffer-size SIZE               设置缓冲区大小buffer (e.g. 1024 or 16K) (default is 1024)
+--no-resize-buffer               不自动调整缓冲区大小.默认情况下自动调整
+--playlist-reverse               以相反的顺序下载播放列表视频
+--playlist-random                以随机的顺序下载播放列表视频
+--xattr-set-filesize             Set file xattribute ytdl.filesize with expected file size (experimental)
+--hls-prefer-native              使用本机默认HLS下载器而不是ffmpeg
+--hls-prefer-ffmpeg              使用ffmpeg而不是本机HLS下载器
+--hls-use-mpegts                 使用TS流容器来存放HLS视频,一些高级播放器允许在下载的同时播放视频
+--external-downloader COMMAND    使用指定的第三方下载工具,当前支持：aria2c,avconv,axel,curl,ffmpeg,httpie,wget
+--external-downloader-args ARGS  给第三方下载工具指定参数，如：--external-downloader aria2c --external-downloader-args -j8
+</code></pre><h3 id="文件系统选项"><a href="#文件系统选项" class="headerlink" title="文件系统选项:"></a>文件系统选项:</h3><pre><code>-a, --batch-file FILE            文件中包含需要下载的URL
+--id                             仅使用文件名中的视频ID
+-o, --output TEMPLATE            Output filename template, see the &quot;OUTPUT TEMPLATE&quot; for all the info
+--autonumber-start NUMBER        指定%(autonumber)s的起始值(默认为1)
+--restrict-filenames             将文件名限制为ASCII字符，并避免文件名中的“＆”和空格
+-w, --no-overwrites              不要覆盖文件
+-c, --continue                   强制恢复部分下载的文件。 默认情况下，youtube-dl仅在可能时将恢复下载。
+--no-continue                    不要恢复部分下载的文件(从头开始重新启动)
+--no-part                        不使用.part文件 - 直接写入输出文件
+--no-mtime                       不使用Last-modified header来设置文件最后修改时间
+--write-description              将视频描述写入.description文件
+--write-info-json                将视频元数据写入.info.json文件
+--write-annotations              将视频注释写入.annotations.xml文件
+--load-info-json FILE            包含视频信息的JSON文件(使用“--write-info-json”选项创建)
+--cookies FILE                   文件从中读取Cookie(经测试，export cookies插件可以使用，但firebug导出的cookies导致错误,chrome下请用cookies.txt)注意：不同平台windows、Linux、OSX之间需要转换CE LF才能使用！
+--cache-dir DIR                  文件存储位置。youtube-dl需要永久保存一些下载的信息。默认为$XDG_CACHE_HOME/youtube-dl或/.cache/youtube-dl。目前，只有YouTube播放器文件（对于具有模糊签名的视频）进行缓存，但可能会发生变化。
+--no-cache-dir                   不用缓存
+--rm-cache-dir                   删除所有缓存文件
+</code></pre><h3 id="缩略图"><a href="#缩略图" class="headerlink" title="缩略图:"></a>缩略图:</h3><pre><code>--write-thumbnail                把缩略图写入硬盘
+--write-all-thumbnails           将所有缩略图写入磁盘
+--list-thumbnails                列出所有可用的缩略图格式
+</code></pre><h3 id="详细-模拟选项"><a href="#详细-模拟选项" class="headerlink" title="详细/模拟选项:"></a>详细/模拟选项:</h3><pre><code>-q, --quiet                      激活退出模式
+--no-warnings                    忽略警告
+-s, --simulate                   不下载不存储任何文件到硬盘，模拟下载模式
+--skip-download                  不下载视频
+-g, --get-url                    模拟下载获取视频直连
+-e, --get-title                  模拟下载获取标题
+--get-id                         模拟下载获取id
+--get-thumbnail                  模拟下载获取缩略图URL
+--get-description                模拟下载获取视频描述
+--get-duration                   模拟下载获取视频长度
+--get-filename                   模拟下载获取输出视频文件名
+--get-format                     模拟下载获取输出视频格式
+-j, --dump-json                  模拟下载获取JSON information.
+-J, --dump-single-json           模拟下载获取每条命令行参数的JSON information.如果是个播放列表，就获取整个播放列表的JSON
+--print-json                     下载的同时获取视频信息的JSON
+--newline                        进度条在新行输出
+--no-progress                    不打印进度条
+--console-title                  在控制台标题栏显示进度
+-v, --verbose                    打印各种调试信息
+--dump-pages                     打印下载下来的使用base64编码的页面来调试问题（非常冗长）
+--write-pages                    将下载的中间页以文件的形式写入当前目录中以调试问题
+--print-traffic                  显示发送和读取HTTP流量
+-C, --call-home                  联系youtube-dl服务器进行调试
+--no-call-home                   不联系youtube-dl服务器进行调试
+</code></pre><h3 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法:"></a>解决方法:</h3><pre><code>--encoding ENCODING              强制指定编码(实验)
+--no-check-certificate           禁止HTTPS证书验证
+--prefer-insecure                使用未加密的连接来检索有关视频的信息(目前仅支持YouTube)
+--user-agent UA                  指定user agent
+--referer URL                    指定自定义的referer,仅限视频来源于同一网站
+--add-header FIELD:VALUE         指定一个自定义值的HTTP头文件,使用分号分割,可以多次使用此选项
+--bidi-workaround                围绕缺少双向文本支持的终端工作。需要在PATH中有bidiv或fribidi可执行文件
+--sleep-interval SECONDS         在每次下载之前休眠的秒数，或者每次下载之前的随机睡眠的范围的下限(最小可能的睡眠秒数)与-max-sleep-interval一起使用。
+--max-sleep-interval SECONDS     每次下载前随机睡眠范围的上限(最大可能睡眠秒数)。只能与--min-sleep-interval一起使用。
+</code></pre><h3 id="视频格式选项"><a href="#视频格式选项" class="headerlink" title="视频格式选项:"></a>视频格式选项:</h3><pre><code>-f, --format FORMAT              视频格式代码,查看&quot;FORMAT SELECTION&quot;获取所有信息
+--all-formats                    获取所有视频格式
+--prefer-free-formats            开源的视频格式优先，除非有特定的请求
+-F, --list-formats               列出请求视频的所有可用格式
+--youtube-skip-dash-manifest     不要下载关于YouTube视频的DASH清单和相关数据
+--merge-output-format FORMAT     如果需要合并(例如bestvideo + bestaudio)，则输出到给定的容器格式。mkv，mp4，ogg，webm，flv之一。如果不需要合并，则忽略
+</code></pre><h3 id="字幕选项"><a href="#字幕选项" class="headerlink" title="字幕选项:"></a>字幕选项:</h3><pre><code>--write-sub                      下载字幕文件
+--write-auto-sub                 下载自动生成的字幕文件 (YouTube only)
+--all-subs                       下载所有可用的字幕
+--list-subs                      列出所有字幕
+--sub-format FORMAT              字幕格式,接受格式偏好,如：&quot;srt&quot; or &quot;ass/srt/best&quot;
+--sub-lang LANGS                 要下载的字幕的语言(可选)用逗号分隔,请使用--list-subs表示可用的语言标签
+</code></pre><h3 id="验证选项"><a href="#验证选项" class="headerlink" title="验证选项:"></a>验证选项:</h3><pre><code>-u, --username USERNAME          使用ID登录
+-p, --password PASSWORD          账户密码,如果此选项未使用,youtube-dl将交互式地询问。
+-2, --twofactor TWOFACTOR        双因素认证码
+-n, --netrc                      使用.netrc认证数据
+--video-password PASSWORD        视频密码(vimeo, smotri, youku)
+</code></pre><h3 id="Adobe-Pass-Options"><a href="#Adobe-Pass-Options" class="headerlink" title="Adobe Pass Options:"></a>Adobe Pass Options:</h3><pre><code>--ap-mso MSO                     Adobe Pass多系统运营商(电视提供商)标识符,使用--ap-list-mso列出可用的MSO
+--ap-username USERNAME           MSO账号登录
+--ap-password PASSWORD           账户密码,如果此选项未使用,youtube-dl将交互式地询问。
+--ap-list-mso                    列出所有支持的MSO
+</code></pre><h3 id="后处理选项"><a href="#后处理选项" class="headerlink" title="后处理选项:"></a>后处理选项:</h3><pre><code>-x, --extract-audio              将视频文件转换为纯音频文件(需要ffmpeg或avconv和ffprobe或avprobe)
+--audio-format FORMAT            指定音频格式: &quot;best&quot;, &quot;aac&quot;, &quot;flac&quot;, &quot;mp3&quot;, &quot;m4a&quot;, &quot;opus&quot;, &quot;vorbis&quot;, or &quot;wav&quot;; &quot;best&quot; by default;-x存在时无效
+--audio-quality QUALITY          指定ffmpeg/avconv音频质量,为VBR插入一个0(best)-9(worse)的值(默认5),或者指定比特率
+--recode-video FORMAT            必要时将视频转码为其他格式(当前支持: mp4|flv|ogg|webm|mkv|avi)
+--postprocessor-args ARGS        给后处理器提供这些参数
+-k, --keep-video                 视频文件在后处理后保存在磁盘上; 该视频默认被删除
+--no-post-overwrites             不要覆盖后处理文件; 默认情况下,后处理文件将被覆盖
+--embed-subs                     在视频中嵌入字幕(仅适用于mp4,webm和mkv视频）
+--embed-thumbnail                将缩略图嵌入音频作为封面艺术
+--add-metadata                   将元数据写入视频文件
+--metadata-from-title FORMAT     从视频标题中解析附加元数据，如歌曲标题/艺术家。格式语法和--output相似.也可以使用带有命名捕获组的正则表达式。解析的参数替换现有值。Example: --metadata-from-title &quot;%(artist)s - %(title)s&quot; matches a title like &quot;Coldplay - Paradise&quot;. Example (regex): --metadata-from-title &quot;(?P&lt;artist&gt;.+?) - (?P&lt;title&gt;.+)&quot;
+--xattrs                         将元数据写入视频文件的xattrs(使用dublin core 和 xdg标准)
+--fixup POLICY                   自动更正文件的已知故障。never(不做警告), warn(只发出警告), detect_or_warn (默认;如果可以的话修复文件,否则警告)
+--prefer-avconv                  后处理时相较ffmpeg偏向于avconv
+--prefer-ffmpeg                  后处理优先使用ffmpeg
+--ffmpeg-location PATH           ffmpeg/avconv程序位置;PATH为二进制所在文件夹或者目录.
+--exec CMD                       在下载后对文件执行命令,类似于find -exec语法.示例：--exec‘adb push {} /sdcard/Music/ &amp;&amp; rm {}‘
+--convert-subs FORMAT            转换字幕格式(当前支持: srt|ass|vtt)
+</code></pre>
       
     </div>
     
@@ -538,7 +555,7 @@ Listen 192.0.2.5:8000
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://skyrin.cc/2018/01/08/apache2-to-create-a-virtual-host/" title="Apache2 创建虚拟主机">http://skyrin.cc/2018/01/08/apache2-to-create-a-virtual-host/</a>
+    <a href="http://skyrin.cc/2016/12/16/youtube-dl-cmd/" title="youtube-dl CMD">http://skyrin.cc/2016/12/16/youtube-dl-cmd/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -553,7 +570,7 @@ Listen 192.0.2.5:8000
       
         <div class="post-tags">
           
-            <a href="/tags/Linux/" rel="tag"># Linux</a>
+            <a href="/tags/Tools/" rel="tag"># Tools</a>
           
         </div>
       
@@ -566,18 +583,14 @@ Listen 192.0.2.5:8000
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/11/16/gradle-file-operation/" rel="next" title="Gradle 的文件操作">
-                <i class="fa fa-chevron-left"></i> Gradle 的文件操作
-              </a>
-            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/01/14/fiddler-usage/" rel="prev" title="Fiddler 极速上手">
-                Fiddler 极速上手 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/04/29/litepal-basic-usage/" rel="prev" title="LitePal的基本用法">
+                LitePal的基本用法 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -780,7 +793,7 @@ Listen 192.0.2.5:8000
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概述"><span class="nav-text">概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基础概念"><span class="nav-text">基础概念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#虚拟主机"><span class="nav-text">虚拟主机</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置-Apache-HTTP-Server-侦听特定端口和地址"><span class="nav-text">配置 Apache HTTP Server 侦听特定端口和地址</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置虚拟主机"><span class="nav-text">配置虚拟主机</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概述"><span class="nav-text">概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Usage-youtube-dl-OPTIONS-URL-URL…"><span class="nav-text">Usage: youtube-dl [OPTIONS] URL [URL…]</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Options"><span class="nav-text">Options:</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#通用选项"><span class="nav-text">通用选项:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#网络选项"><span class="nav-text">网络选项:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#地理限制"><span class="nav-text">地理限制:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#视频选择"><span class="nav-text">视频选择:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#下载选项"><span class="nav-text">下载选项:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件系统选项"><span class="nav-text">文件系统选项:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#缩略图"><span class="nav-text">缩略图:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#详细-模拟选项"><span class="nav-text">详细/模拟选项:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方法"><span class="nav-text">解决方法:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#视频格式选项"><span class="nav-text">视频格式选项:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字幕选项"><span class="nav-text">字幕选项:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#验证选项"><span class="nav-text">验证选项:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Adobe-Pass-Options"><span class="nav-text">Adobe Pass Options:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#后处理选项"><span class="nav-text">后处理选项:</span></a></li></ol></li></ol></div>
             
 
           </div>
