@@ -105,19 +105,19 @@
 
 
 
-<meta name="description" content="1、基础概念虚拟主机术语虚拟主机指的是在单一机器上运行多个网站 (例如 company1.example.com 和 company2.example.com) 。 虚拟主机可以“基于 IP”，即每个 IP 一个站点； 或者“基于名称”， 即每个 IP 多个站点。这些站点运行在同一物理服务器上的事实不会明显的透漏给最终用户。 Apache 是第一个支持基于 IP 的虚拟主机的服务器。 Apache">
+<meta name="description" content="概述术语虚拟主机指的是在单一机器上运行多个网站 (例如 company1.example.com 和 company2.example.com) 。 虚拟主机可以“基于 IP”，即每个 IP 一个站点； 或者“基于名称”， 即每个 IP 多个站点。这些站点运行在同一物理服务器上的事实不会明显的透漏给最终用户。">
 <meta name="keywords" content="Linux">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Apache2 创建虚拟主机">
 <meta property="og:url" content="http://skyrin.cc/2018/01/08/apache2-to-create-a-virtual-host/index.html">
 <meta property="og:site_name" content="Skyrin&#39;s Blog">
-<meta property="og:description" content="1、基础概念虚拟主机术语虚拟主机指的是在单一机器上运行多个网站 (例如 company1.example.com 和 company2.example.com) 。 虚拟主机可以“基于 IP”，即每个 IP 一个站点； 或者“基于名称”， 即每个 IP 多个站点。这些站点运行在同一物理服务器上的事实不会明显的透漏给最终用户。 Apache 是第一个支持基于 IP 的虚拟主机的服务器。 Apache">
+<meta property="og:description" content="概述术语虚拟主机指的是在单一机器上运行多个网站 (例如 company1.example.com 和 company2.example.com) 。 虚拟主机可以“基于 IP”，即每个 IP 一个站点； 或者“基于名称”， 即每个 IP 多个站点。这些站点运行在同一物理服务器上的事实不会明显的透漏给最终用户。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/3551539-33c56a7656d2c895.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2018-01-16T01:39:32.778Z">
+<meta property="og:updated_time" content="2018-01-16T01:54:37.681Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Apache2 创建虚拟主机">
-<meta name="twitter:description" content="1、基础概念虚拟主机术语虚拟主机指的是在单一机器上运行多个网站 (例如 company1.example.com 和 company2.example.com) 。 虚拟主机可以“基于 IP”，即每个 IP 一个站点； 或者“基于名称”， 即每个 IP 多个站点。这些站点运行在同一物理服务器上的事实不会明显的透漏给最终用户。 Apache 是第一个支持基于 IP 的虚拟主机的服务器。 Apache">
+<meta name="twitter:description" content="概述术语虚拟主机指的是在单一机器上运行多个网站 (例如 company1.example.com 和 company2.example.com) 。 虚拟主机可以“基于 IP”，即每个 IP 一个站点； 或者“基于名称”， 即每个 IP 多个站点。这些站点运行在同一物理服务器上的事实不会明显的透漏给最终用户。">
 <meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/3551539-33c56a7656d2c895.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
@@ -404,8 +404,8 @@
       
 
       
-        <h2 id="1、基础概念"><a href="#1、基础概念" class="headerlink" title="1、基础概念"></a><strong>1、基础概念</strong></h2><h3 id="虚拟主机"><a href="#虚拟主机" class="headerlink" title="虚拟主机"></a><strong>虚拟主机</strong></h3><p>术语<strong>虚拟主机</strong>指的是在单一机器上运行多个网站 (例如 company1.example.com 和 company2.example.com) 。 虚拟主机可以“基于 IP”，即每个 IP 一个站点； 或者“基于名称”， 即每个 IP 多个站点。这些站点运行在同一物理服务器上的事实不会明显的透漏给最终用户。</p>
-<p>Apache 是第一个支持基于 IP 的虚拟主机的服务器。 Apache 版本 1.1 和更新的版本同时支持基于 IP 和基于名称的虚拟主机。 基于名称的虚拟主机有时候称为基于主机或非 IP 的虚拟主机.</p>
+        <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>术语<strong>虚拟主机</strong>指的是在单一机器上运行多个网站 (例如 company1.example.com 和 company2.example.com) 。 虚拟主机可以“基于 IP”，即每个 IP 一个站点； 或者“基于名称”， 即每个 IP 多个站点。这些站点运行在同一物理服务器上的事实不会明显的透漏给最终用户。<br><a id="more"></a></p>
+<h2 id="基础概念"><a href="#基础概念" class="headerlink" title="基础概念"></a>基础概念</h2><h3 id="虚拟主机"><a href="#虚拟主机" class="headerlink" title="虚拟主机"></a>虚拟主机</h3><p>Apache 是第一个支持基于 IP 的虚拟主机的服务器。 Apache 版本 1.1 和更新的版本同时支持基于 IP 和基于名称的虚拟主机。 基于名称的虚拟主机有时候称为基于主机或非 IP 的虚拟主机.</p>
 <p>以下解释是在 Apache 中支持虚拟主机的所有详细信息的文档页面列表。</p>
 <p><strong>虚拟主机支持的配置</strong></p>
 <ul>
@@ -423,7 +423,7 @@
 <li><a href="http://httpd.apache.org/docs/2.4/mod/core.html#serveralias" target="_blank" rel="noopener">ServerAlias</a></li>
 <li><a href="http://httpd.apache.org/docs/2.4/mod/core.html#serverpath" target="_blank" rel="noopener">ServerPath</a></li>
 </ul>
-<h3 id="配置-Apache-HTTP-Server-侦听特定端口和地址"><a href="#配置-Apache-HTTP-Server-侦听特定端口和地址" class="headerlink" title="配置 Apache HTTP Server 侦听特定端口和地址"></a><strong>配置 Apache HTTP Server 侦听特定端口和地址</strong></h3><table>
+<h3 id="配置-Apache-HTTP-Server-侦听特定端口和地址"><a href="#配置-Apache-HTTP-Server-侦听特定端口和地址" class="headerlink" title="配置 Apache HTTP Server 侦听特定端口和地址"></a>配置 Apache HTTP Server 侦听特定端口和地址</h3><table>
 <thead>
 <tr>
 <th style="text-align:left">相关模块</th>
@@ -455,7 +455,7 @@ Listen 192.0.2.5:8000
 <pre><code>Listen 192.170.2.1:8443 https
 </code></pre><p><strong>Listen 与虚拟主机是如何协同工作的</strong></p>
 <p>Listen 指令不实现虚拟主机 - 它只告诉主服务器要监听的地址和端口。如果不使用<a href="http://httpd.apache.org/docs/2.4/mod/core.html#virtualhost" target="_blank" rel="noopener">&lt;VirtualHost&gt;</a> 指令，则服务器对于所有接受的请求将以相同的方式处理。但是，<a href="http://httpd.apache.org/docs/2.4/mod/core.html#virtualhost" target="_blank" rel="noopener">&lt;VirtualHost&gt;</a> 可以用来为一个或多个地址或端口指定不同的行为。要实现VirtualHost，服务器必须先被告知要使用的地址和端口。然后<a href="http://httpd.apache.org/docs/2.4/mod/core.html#virtualhost" target="_blank" rel="noopener">&lt;VirtualHost&gt;</a>为指定的地址和端口创建一个配置来设置这个虚拟主机的行为。请注意，如果<a href="http://httpd.apache.org/docs/2.4/mod/core.html#virtualhost" target="_blank" rel="noopener">&lt;VirtualHost&gt;</a>设置为服务器未侦听的地址和端口，则无法访问。</p>
-<h2 id="2、配置虚拟主机"><a href="#2、配置虚拟主机" class="headerlink" title="2、配置虚拟主机"></a><strong>2、配置虚拟主机</strong></h2><p><strong>上传站点到服务器</strong></p>
+<h2 id="配置虚拟主机"><a href="#配置虚拟主机" class="headerlink" title="配置虚拟主机"></a>配置虚拟主机</h2><p><strong>上传站点到服务器</strong></p>
 <p>Apache 站点根目录位于 <code>/var/www/</code> ，新上传站点应位于 <code>www</code> 目录下，站点目录命名规则推荐使用 <code>domain-port</code></p>
 <p>创建站点目录</p>
 <pre><code>$ cd /var/www
@@ -780,7 +780,7 @@ Listen 192.0.2.5:8000
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、基础概念"><span class="nav-text">1、基础概念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#虚拟主机"><span class="nav-text">虚拟主机</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置-Apache-HTTP-Server-侦听特定端口和地址"><span class="nav-text">配置 Apache HTTP Server 侦听特定端口和地址</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、配置虚拟主机"><span class="nav-text">2、配置虚拟主机</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概述"><span class="nav-text">概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基础概念"><span class="nav-text">基础概念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#虚拟主机"><span class="nav-text">虚拟主机</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置-Apache-HTTP-Server-侦听特定端口和地址"><span class="nav-text">配置 Apache HTTP Server 侦听特定端口和地址</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置虚拟主机"><span class="nav-text">配置虚拟主机</span></a></li></ol></div>
             
 
           </div>
