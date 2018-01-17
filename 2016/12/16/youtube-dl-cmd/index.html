@@ -113,7 +113,7 @@
 <meta property="og:site_name" content="Skyrin&#39;s Blog">
 <meta property="og:description" content="概述youtube-dl 命令参数简译">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-01-16T09:26:34.251Z">
+<meta property="og:updated_time" content="2018-01-17T01:22:41.543Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="youtube-dl CMD">
 <meta name="twitter:description" content="概述youtube-dl 命令参数简译">
@@ -382,7 +382,8 @@
       
         <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>youtube-dl 命令参数简译</p>
 <a id="more"></a>
-<h2 id="USAGE-youtube-dl-OPTIONS-URL-URL…"><a href="#USAGE-youtube-dl-OPTIONS-URL-URL…" class="headerlink" title="USAGE: youtube-dl [OPTIONS] URL [URL…]"></a>USAGE: youtube-dl [OPTIONS] URL [URL…]</h2><h2 id="OPTIONS"><a href="#OPTIONS" class="headerlink" title="OPTIONS:"></a>OPTIONS:</h2><h3 id="通用选项"><a href="#通用选项" class="headerlink" title="通用选项:"></a>通用选项:</h3><pre><code>-h, --help                       打印帮助文档
+<h2 id="USAGE"><a href="#USAGE" class="headerlink" title="USAGE:"></a>USAGE:</h2><pre><code>youtube-dl [OPTIONS] URL [URL...]
+</code></pre><h2 id="OPTIONS"><a href="#OPTIONS" class="headerlink" title="OPTIONS:"></a>OPTIONS:</h2><h3 id="通用选项"><a href="#通用选项" class="headerlink" title="通用选项"></a>通用选项</h3><pre><code>-h, --help                       打印帮助文档
 --version                        打印版本信息
 -U, --update                     更新到最新版(需要权限)
 -i, --ignore-errors              遇到下载错误时跳过
@@ -398,16 +399,16 @@
 --mark-watched                   标记看过此视频 (YouTube only)
 --no-mark-watched                不标记看过此视频 (YouTube only)
 --no-color                       打印到屏幕上的代码不带色
-</code></pre><h3 id="网络选项"><a href="#网络选项" class="headerlink" title="网络选项:"></a>网络选项:</h3><pre><code>--proxy URL                      使用HTTP/HTTPS/SOCKS协议的代理.如：socks5://127.0.0.1:1080/.
+</code></pre><h3 id="网络选项"><a href="#网络选项" class="headerlink" title="网络选项"></a>网络选项</h3><pre><code>--proxy URL                      使用HTTP/HTTPS/SOCKS协议的代理.如：socks5://127.0.0.1:1080/.
 --socket-timeout SECONDS         放弃连接前等待时间
 --source-address IP              绑定的客户端IP地址
 -4, --force-ipv4                 所有连接通过IPv4
 -6, --force-ipv6                 所有连接通过IPv6
-</code></pre><h3 id="地理限制"><a href="#地理限制" class="headerlink" title="地理限制:"></a>地理限制:</h3><pre><code>--geo-verification-proxy URL     使用此代理地址测试一些有地理限制的地址
+</code></pre><h3 id="地理限制"><a href="#地理限制" class="headerlink" title="地理限制"></a>地理限制</h3><pre><code>--geo-verification-proxy URL     使用此代理地址测试一些有地理限制的地址
 --geo-bypass                     绕过地理限制通过伪装X-Forwarded-For HTTP头部的客户端ip (实验)
 --no-geo-bypass                  不 绕过地理限制通过伪装X-Forwarded-For HTTP头部的客户端ip (实验)
 --geo-bypass-country CODE        强制绕过地理限制通过提供准确的ISO 3166-2标准的国别代码(实验) 注：以上三个实验参数实测未成功
-</code></pre><h3 id="视频选择"><a href="#视频选择" class="headerlink" title="视频选择:"></a>视频选择:</h3><pre><code>--playlist-start NUMBER          指定列表中开始下载的视频(默认为1)
+</code></pre><h3 id="视频选择"><a href="#视频选择" class="headerlink" title="视频选择"></a>视频选择</h3><pre><code>--playlist-start NUMBER          指定列表中开始下载的视频(默认为1)
 --playlist-end NUMBER            指定列表中结束的视频(默认为last)
 --playlist-items ITEM_SPEC       指定列表中要下载的视频项目编号.如：&quot;--playlist-items 1,2,5,8&quot;或&quot;--playlist-items 1-3,7,10-13&quot;
 --match-title REGEX              下载标题匹配的视频(正则表达式或区分大小写的字符串)
@@ -426,7 +427,7 @@
 --age-limit YEARS                下载合适上传年限的视频
 --download-archive FILE          仅下载档案文件中未列出的影片，已下载的记录ID
 --include-ads                    同时下载广告(实验)
-</code></pre><h3 id="下载选项"><a href="#下载选项" class="headerlink" title="下载选项:"></a>下载选项:</h3><pre><code>-r, --limit-rate RATE            最大bps (e.g. 50K or 4.2M)
+</code></pre><h3 id="下载选项"><a href="#下载选项" class="headerlink" title="下载选项"></a>下载选项</h3><pre><code>-r, --limit-rate RATE            最大bps (e.g. 50K or 4.2M)
 -R, --retries RETRIES            重试次数 (默认10), or &quot;infinite&quot;.
 --fragment-retries RETRIES       一个分段的最大重试次数(default is 10), or &quot;infinite&quot; (DASH, hlsnative and ISM)
 --skip-unavailable-fragments     跳过不可用分段(DASH, hlsnative and ISM)
@@ -442,7 +443,7 @@
 --hls-use-mpegts                 使用TS流容器来存放HLS视频,一些高级播放器允许在下载的同时播放视频
 --external-downloader COMMAND    使用指定的第三方下载工具,当前支持：aria2c,avconv,axel,curl,ffmpeg,httpie,wget
 --external-downloader-args ARGS  给第三方下载工具指定参数，如：--external-downloader aria2c --external-downloader-args -j8
-</code></pre><h3 id="文件系统选项"><a href="#文件系统选项" class="headerlink" title="文件系统选项:"></a>文件系统选项:</h3><pre><code>-a, --batch-file FILE            文件中包含需要下载的URL
+</code></pre><h3 id="文件系统选项"><a href="#文件系统选项" class="headerlink" title="文件系统选项"></a>文件系统选项</h3><pre><code>-a, --batch-file FILE            文件中包含需要下载的URL
 --id                             仅使用文件名中的视频ID
 -o, --output TEMPLATE            Output filename template, see the &quot;OUTPUT TEMPLATE&quot; for all the info
 --autonumber-start NUMBER        指定%(autonumber)s的起始值(默认为1)
@@ -460,10 +461,10 @@
 --cache-dir DIR                  文件存储位置。youtube-dl需要永久保存一些下载的信息。默认为$XDG_CACHE_HOME/youtube-dl或/.cache/youtube-dl。目前，只有YouTube播放器文件（对于具有模糊签名的视频）进行缓存，但可能会发生变化。
 --no-cache-dir                   不用缓存
 --rm-cache-dir                   删除所有缓存文件
-</code></pre><h3 id="缩略图"><a href="#缩略图" class="headerlink" title="缩略图:"></a>缩略图:</h3><pre><code>--write-thumbnail                把缩略图写入硬盘
+</code></pre><h3 id="缩略图"><a href="#缩略图" class="headerlink" title="缩略图"></a>缩略图</h3><pre><code>--write-thumbnail                把缩略图写入硬盘
 --write-all-thumbnails           将所有缩略图写入磁盘
 --list-thumbnails                列出所有可用的缩略图格式
-</code></pre><h3 id="详细-模拟选项"><a href="#详细-模拟选项" class="headerlink" title="详细/模拟选项:"></a>详细/模拟选项:</h3><pre><code>-q, --quiet                      激活退出模式
+</code></pre><h3 id="详细-模拟选项"><a href="#详细-模拟选项" class="headerlink" title="详细/模拟选项"></a>详细/模拟选项</h3><pre><code>-q, --quiet                      激活退出模式
 --no-warnings                    忽略警告
 -s, --simulate                   不下载不存储任何文件到硬盘，模拟下载模式
 --skip-download                  不下载视频
@@ -487,7 +488,7 @@
 --print-traffic                  显示发送和读取HTTP流量
 -C, --call-home                  联系youtube-dl服务器进行调试
 --no-call-home                   不联系youtube-dl服务器进行调试
-</code></pre><h3 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法:"></a>解决方法:</h3><pre><code>--encoding ENCODING              强制指定编码(实验)
+</code></pre><h3 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h3><pre><code>--encoding ENCODING              强制指定编码(实验)
 --no-check-certificate           禁止HTTPS证书验证
 --prefer-insecure                使用未加密的连接来检索有关视频的信息(目前仅支持YouTube)
 --user-agent UA                  指定user agent
@@ -496,28 +497,28 @@
 --bidi-workaround                围绕缺少双向文本支持的终端工作。需要在PATH中有bidiv或fribidi可执行文件
 --sleep-interval SECONDS         在每次下载之前休眠的秒数，或者每次下载之前的随机睡眠的范围的下限(最小可能的睡眠秒数)与-max-sleep-interval一起使用。
 --max-sleep-interval SECONDS     每次下载前随机睡眠范围的上限(最大可能睡眠秒数)。只能与--min-sleep-interval一起使用。
-</code></pre><h3 id="视频格式选项"><a href="#视频格式选项" class="headerlink" title="视频格式选项:"></a>视频格式选项:</h3><pre><code>-f, --format FORMAT              视频格式代码,查看&quot;FORMAT SELECTION&quot;获取所有信息
+</code></pre><h3 id="视频格式选项"><a href="#视频格式选项" class="headerlink" title="视频格式选项"></a>视频格式选项</h3><pre><code>-f, --format FORMAT              视频格式代码,查看&quot;FORMAT SELECTION&quot;获取所有信息
 --all-formats                    获取所有视频格式
 --prefer-free-formats            开源的视频格式优先，除非有特定的请求
 -F, --list-formats               列出请求视频的所有可用格式
 --youtube-skip-dash-manifest     不要下载关于YouTube视频的DASH清单和相关数据
 --merge-output-format FORMAT     如果需要合并(例如bestvideo + bestaudio)，则输出到给定的容器格式。mkv，mp4，ogg，webm，flv之一。如果不需要合并，则忽略
-</code></pre><h3 id="字幕选项"><a href="#字幕选项" class="headerlink" title="字幕选项:"></a>字幕选项:</h3><pre><code>--write-sub                      下载字幕文件
+</code></pre><h3 id="字幕选项"><a href="#字幕选项" class="headerlink" title="字幕选项"></a>字幕选项</h3><pre><code>--write-sub                      下载字幕文件
 --write-auto-sub                 下载自动生成的字幕文件 (YouTube only)
 --all-subs                       下载所有可用的字幕
 --list-subs                      列出所有字幕
 --sub-format FORMAT              字幕格式,接受格式偏好,如：&quot;srt&quot; or &quot;ass/srt/best&quot;
 --sub-lang LANGS                 要下载的字幕的语言(可选)用逗号分隔,请使用--list-subs表示可用的语言标签
-</code></pre><h3 id="验证选项"><a href="#验证选项" class="headerlink" title="验证选项:"></a>验证选项:</h3><pre><code>-u, --username USERNAME          使用ID登录
+</code></pre><h3 id="验证选项"><a href="#验证选项" class="headerlink" title="验证选项"></a>验证选项</h3><pre><code>-u, --username USERNAME          使用ID登录
 -p, --password PASSWORD          账户密码,如果此选项未使用,youtube-dl将交互式地询问。
 -2, --twofactor TWOFACTOR        双因素认证码
 -n, --netrc                      使用.netrc认证数据
 --video-password PASSWORD        视频密码(vimeo, smotri, youku)
-</code></pre><h3 id="Adobe-Pass-选项"><a href="#Adobe-Pass-选项" class="headerlink" title="Adobe Pass 选项:"></a>Adobe Pass 选项:</h3><pre><code>--ap-mso MSO                     Adobe Pass多系统运营商(电视提供商)标识符,使用--ap-list-mso列出可用的MSO
+</code></pre><h3 id="Adobe-Pass-选项"><a href="#Adobe-Pass-选项" class="headerlink" title="Adobe Pass 选项"></a>Adobe Pass 选项</h3><pre><code>--ap-mso MSO                     Adobe Pass多系统运营商(电视提供商)标识符,使用--ap-list-mso列出可用的MSO
 --ap-username USERNAME           MSO账号登录
 --ap-password PASSWORD           账户密码,如果此选项未使用,youtube-dl将交互式地询问。
 --ap-list-mso                    列出所有支持的MSO
-</code></pre><h3 id="后处理选项"><a href="#后处理选项" class="headerlink" title="后处理选项:"></a>后处理选项:</h3><pre><code>-x, --extract-audio              将视频文件转换为纯音频文件(需要ffmpeg或avconv和ffprobe或avprobe)
+</code></pre><h3 id="后处理选项"><a href="#后处理选项" class="headerlink" title="后处理选项"></a>后处理选项</h3><pre><code>-x, --extract-audio              将视频文件转换为纯音频文件(需要ffmpeg或avconv和ffprobe或avprobe)
 --audio-format FORMAT            指定音频格式: &quot;best&quot;, &quot;aac&quot;, &quot;flac&quot;, &quot;mp3&quot;, &quot;m4a&quot;, &quot;opus&quot;, &quot;vorbis&quot;, or &quot;wav&quot;; &quot;best&quot; by default;-x存在时无效
 --audio-quality QUALITY          指定ffmpeg/avconv音频质量,为VBR插入一个0(best)-9(worse)的值(默认5),或者指定比特率
 --recode-video FORMAT            必要时将视频转码为其他格式(当前支持: mp4|flv|ogg|webm|mkv|avi)
@@ -535,8 +536,21 @@
 --ffmpeg-location PATH           ffmpeg/avconv程序位置;PATH为二进制所在文件夹或者目录.
 --exec CMD                       在下载后对文件执行命令,类似于find -exec语法.示例：--exec‘adb push {} /sdcard/Music/ &amp;&amp; rm {}‘
 --convert-subs FORMAT            转换字幕格式(当前支持: srt|ass|vtt)
-</code></pre><h3 id="输出模板"><a href="#输出模板" class="headerlink" title="输出模板"></a>输出模板</h3><p>该-o选项允许用户指定输出文件名称的模板。</p>
-<p>基本用法下载一个文件时，就像在没有设置任何模板参数youtube-dl -o funny_video.flv “<a href="https://some/video&quot;。但是，它可能包含下载每个视频时将被替换的特殊序列。特殊序列可以根据python字符串格式化操作来格式化。例如，%(NAME)s或者%(NAME)05d。为了澄清，这是一个百分号，后面跟着一个名字，然后是格式化操作。允许的名称和序列类型是：" target="_blank" rel="noopener">https://some/video&quot;。但是，它可能包含下载每个视频时将被替换的特殊序列。特殊序列可以根据python字符串格式化操作来格式化。例如，%(NAME)s或者%(NAME)05d。为了澄清，这是一个百分号，后面跟着一个名字，然后是格式化操作。允许的名称和序列类型是：</a></p>
+</code></pre><h3 id="本地配置"><a href="#本地配置" class="headerlink" title="本地配置"></a>本地配置</h3><p>您可以通过将任何支持的命令行选项放置到配置文件来配置 youtube-dl。在 Linux 和 OS X 上，系统范围的配置文件位于 /etc/youtube-dl.conf，用户范围的配置文件位于 ~/.config/youtube-dl/config。在Windows上，用户范围的配置文件位置是 %APPDATA%\youtube-dl\config.txt 或 C:\Users\&lt;user name&gt;\youtube-dl.conf。请注意，默认情况下，配置文件可能不存在，所以您可能需要自己创建它。    </p>
+<p>例如，使用如下配置文件，youtube-dl 将始终只提取音频，不使用文件上次使用时间来设置文件最后修改时间，使用代理下载并保存所有输出到用户主目录下的 Movies 文件夹下</p>
+<pre><code># Lines starting with # are comments
+# Always extract audio
+-x
+# Do not copy the mtime
+--no-mtime
+# Use this proxy
+--proxy 127.0.0.1:3128
+# Save all videos under Movies directory in your home directory
+-o ~/Movies/%(title)s.%(ext)s
+</code></pre><p>请注意，配置文件中的选项与常规命令行中所调用的选项（又名 switches）相同，因此在 <code>-</code> 或者 <code>--</code> 后面不得包含空格，例如 <code>-o</code> 或 <code>--proxy</code> 不能写成 <code>- o</code> 或者 <code>-- proxy</code></p>
+<p>你可以使用 <code>--ignore-config</code> 来禁用配置文件，也可以使用 <code>--config-location</code> 启用自定义配置文件</p>
+<h3 id="输出模板"><a href="#输出模板" class="headerlink" title="输出模板"></a>输出模板</h3><p>该 <code>-o</code> 选项允许用户指定输出文件名称的模板。</p>
+<p>基本用法下载一个文件时，就像在没有设置任何模板参数 youtube-dl -o funny_video.flv “<a href="">https://some/video</a>“。 但是，它可能包含下载每个视频时将被替换的特殊序列。特殊序列可以根据python字符串格式化操作来格式化。例如，%(NAME)s或者%(NAME)05d。为了澄清，这是一个百分号，后面跟着一个名字，然后是格式化操作。允许的名称和序列类型如下：</p>
 <pre><code>id （字符串）：                     视频标识符
 title （字符串）：                  视频标题
 url （字符串）：                    视频网址
@@ -875,7 +889,7 @@ release_year （数字）：             发行专辑时的年（YYYY）
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概述"><span class="nav-text">概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#USAGE-youtube-dl-OPTIONS-URL-URL…"><span class="nav-text">USAGE: youtube-dl [OPTIONS] URL [URL…]</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#OPTIONS"><span class="nav-text">OPTIONS:</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#通用选项"><span class="nav-text">通用选项:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#网络选项"><span class="nav-text">网络选项:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#地理限制"><span class="nav-text">地理限制:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#视频选择"><span class="nav-text">视频选择:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#下载选项"><span class="nav-text">下载选项:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件系统选项"><span class="nav-text">文件系统选项:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#缩略图"><span class="nav-text">缩略图:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#详细-模拟选项"><span class="nav-text">详细/模拟选项:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方法"><span class="nav-text">解决方法:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#视频格式选项"><span class="nav-text">视频格式选项:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字幕选项"><span class="nav-text">字幕选项:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#验证选项"><span class="nav-text">验证选项:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Adobe-Pass-选项"><span class="nav-text">Adobe Pass 选项:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#后处理选项"><span class="nav-text">后处理选项:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#输出模板"><span class="nav-text">输出模板</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概述"><span class="nav-text">概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#USAGE"><span class="nav-text">USAGE:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#OPTIONS"><span class="nav-text">OPTIONS:</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#通用选项"><span class="nav-text">通用选项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#网络选项"><span class="nav-text">网络选项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#地理限制"><span class="nav-text">地理限制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#视频选择"><span class="nav-text">视频选择</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#下载选项"><span class="nav-text">下载选项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件系统选项"><span class="nav-text">文件系统选项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#缩略图"><span class="nav-text">缩略图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#详细-模拟选项"><span class="nav-text">详细/模拟选项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方法"><span class="nav-text">解决方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#视频格式选项"><span class="nav-text">视频格式选项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字幕选项"><span class="nav-text">字幕选项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#验证选项"><span class="nav-text">验证选项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Adobe-Pass-选项"><span class="nav-text">Adobe Pass 选项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#后处理选项"><span class="nav-text">后处理选项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#本地配置"><span class="nav-text">本地配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#输出模板"><span class="nav-text">输出模板</span></a></li></ol></li></ol></div>
             
 
           </div>
