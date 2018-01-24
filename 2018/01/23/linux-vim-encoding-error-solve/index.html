@@ -114,7 +114,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/3551539-7a892d2ae9fbe552.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/3551539-9a78077fb26aa56d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2018-01-24T08:52:40.894Z">
+<meta property="og:updated_time" content="2018-01-24T09:00:38.614Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux vim 工具中文乱码问题分析">
 <meta name="twitter:description" content="概述最近在新装的服务器上修改站点的一个 html 文件时，使用 vim 编辑内容时发现文本中的所有中文都是乱码，究其原因是因为系统字符编码与文件编码不一致所导致的，本文将详细介绍如何修改 Linux 系统字符编码格式以及解决此类问题的最佳方式。">
@@ -525,10 +525,10 @@
 <pre><code>$ locale
 </code></pre><p>查看当前系统已经安装的 Locale</p>
 <pre><code>$ locale -a
-</code></pre><h2 id="解决问题"><a href="#解决问题" class="headerlink" title="解决问题"></a>解决问题</h2><p>首先保证 vim 使用的编码格式与所打开文件的编码格式一致，vim 一般情况下根据系统默认选项选择自己使用的编码，除非是 /etc/vim/vimrc 中特殊指定，使用如下命令查看文件使用的编码格式</p>
+</code></pre><h2 id="解决问题"><a href="#解决问题" class="headerlink" title="解决问题"></a>解决问题</h2><p>首先保证 vim 使用的编码格式与所打开文件的编码格式一致，vim 一般情况下根据系统默认选项选择自己使用的编码，除非是 /etc/vim/vimrc （请注意不同的 linux 版本配置文件位置可能不一样）中特殊指定；用 vim 打开文件并使用如下命令查看文件的编码格式</p>
 <pre><code>:set fileencoding
-</code></pre><p>fileencoding=utf-8：表示当前打开的文件编码格式为 utf-8 </p>
-<p>然后修改系统 locale 与文档编码格式一致</p>
+</code></pre><p>fileencoding=utf-8：表示当前文件编码格式为 utf-8 </p>
+<p>然后修改系统 locale 与文件编码格式一致</p>
 <pre><code>$ vim /etc/default/locale
 </code></pre><p>输入如下内容并保存</p>
 <pre><code>LANG=en_US.UTF-8
@@ -548,11 +548,11 @@ LC_IDENTIFICATION=&quot;en_US.UTF-8&quot;
 LC_ALL=&quot;en_US.UTF-8&quot;
 </code></pre><p>使配置生效</p>
 <pre><code>$ source /etc/default/locale
-</code></pre><p>现在问题应该已经解决了，如果你不想修改系统的 locale 又想使 vim 不出现乱码，可以在 /etc/vim/vimrc 配置文件中来指定 vim 工具使用的编码格式，vim 会按照 vimrc &gt; locale 的优先级来获取自己将要使用的编码格式；在 vimrc 文件尾部追加如下内容</p>
+</code></pre><p>现在问题应该已经解决了，如果你不想修改系统的 locale 又不希望 vim 出现乱码，可以在 /etc/vim/vimrc 配置文件中来指定 vim 工具使用的编码格式，vim 会按照 vimrc &gt; locale 的优先级来获取自己将要使用的编码格式；在 vimrc 文件尾部追加如下内容</p>
 <pre><code>set fileencodings=utf-8
 set termencoding=utf-8
 set encoding=utf-8
-</code></pre><p>vimrc 除了设置此功能外，还可以设置自动显示行号、高亮语法、背景主题等诸多实用项，请参考 <a href="">vimrc config</a> 详细了解。</p>
+</code></pre><p>vimrc 除了设置编码格式功能外，还可以设置自动显示行号、高亮语法、背景主题等诸多实用项，请参考 <a href="">vimrc config</a> 详细了解。</p>
 
       
     </div>
