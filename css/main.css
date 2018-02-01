@@ -1843,7 +1843,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #55fff5;
+  background: #c96cf2;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2966,7 +2966,7 @@ pre .literal,
 pre .params,
 pre .constant,
 pre .command {
-  color: #a9b7c6;
+  color: #ccc;
 }
 pre .keyword,
 pre .javascript {
