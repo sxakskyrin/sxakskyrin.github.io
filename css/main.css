@@ -1843,7 +1843,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #c96cf2;
+  background: #5903ad;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2955,7 +2955,6 @@ pre .header,
 pre .ruby .symbol,
 pre .xml .cdata,
 pre .special,
-pre .number,
 pre .formula {
   color: #6a8759;
 }
