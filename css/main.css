@@ -1843,7 +1843,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #4a0a16;
+  background: #55fff5;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2959,17 +2959,6 @@ pre .number,
 pre .formula {
   color: #6a8759;
 }
-pre .comment {
-  color: #629755;
-}
-pre .keyword,
-pre .javascript .function {
-  color: #cc7832;
-}
-pre .title,
-pre .css .hexcolor {
-  color: #ffc66d;
-}
 pre .number,
 pre .preprocessor,
 pre .built_in,
@@ -2978,6 +2967,17 @@ pre .params,
 pre .constant,
 pre .command {
   color: #a9b7c6;
+}
+pre .keyword,
+pre .javascript {
+  color: #cc7832;
+}
+pre .title,
+pre .css .hexcolor {
+  color: #ffc66d;
+}
+pre .comment {
+  color: #629755;
 }
 pre .number {
   color: #6897bb;
