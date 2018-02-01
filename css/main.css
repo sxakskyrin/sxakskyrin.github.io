@@ -1843,7 +1843,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #8f910f;
+  background: #4a0a16;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2960,7 +2960,7 @@ pre .formula {
   color: #6a8759;
 }
 pre .comment {
-  color: #808080;
+  color: #629755;
 }
 pre .keyword,
 pre .javascript .function {
@@ -2984,4 +2984,7 @@ pre .number {
 }
 pre .meta {
   color: #bbb529;
+}
+pre .highlight {
+  color: #a9b7c6;
 }
