@@ -1843,7 +1843,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #0062ff;
+  background: #8f910f;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2946,6 +2946,19 @@ hr {
 .highlight .code pre {
   background-color: #2b2b2b;
 }
+pre .ruby .class .title,
+pre .css .rules .attribute,
+pre .string,
+pre .value,
+pre .inheritance,
+pre .header,
+pre .ruby .symbol,
+pre .xml .cdata,
+pre .special,
+pre .number,
+pre .formula {
+  color: #6a8759;
+}
 pre .comment {
   color: #808080;
 }
@@ -2964,20 +2977,7 @@ pre .literal,
 pre .params,
 pre .constant,
 pre .command {
-  color: #9876aa;
-}
-pre .ruby .class .title,
-pre .css .rules .attribute,
-pre .string,
-pre .value,
-pre .inheritance,
-pre .header,
-pre .ruby .symbol,
-pre .xml .cdata,
-pre .special,
-pre .number,
-pre .formula {
-  color: #6a8759;
+  color: #a9b7c6;
 }
 pre .number {
   color: #6897bb;
