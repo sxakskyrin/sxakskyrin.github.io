@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[vim-tips]]></title>
+    <title><![CDATA[vim 常用命令]]></title>
     <url>%2F2018%2F02%2F06%2Fvim-tips%2F</url>
-    <content type="text"><![CDATA[概述记录一些 vim 的常用命令 多行删除:1,10d //删除1~10行 显示行号:set num //可以在 ~/.vimrc 中设置为永久生效项 修改文本编码格式:set encoding=utf-8 搜索内容/aaa //从当前位置往下搜索 aaa ?aaa //从当前位置往上搜索 aaa 内容替换:%s/aaa/bbb/g //替换全文 aaa 为 bbb :s/aaa/bbb/ //替换当前行第一个 aaa 为 bbb :s/aaa/bbb/g //替换当前行所有 aaa 为 bbb :66s/aaa/bbb/g //替换 66 行 aaa 为 bbb MOREVI中的多行删除与复制]]></content>
+    <content type="text"><![CDATA[概述记录一些 vim 的常用命令 多行删除:1,10d //删除1~10行 显示行号:set num //可以在 ~/.vimrc 中设置为永久生效项 修改文本编码格式:set encoding=utf-8 搜索内容/aaa //从当前位置往后搜索 aaa ?aaa //从当前位置往前搜索 aaa 内容替换:%s/aaa/bbb/g //替换全文 aaa 为 bbb :s/aaa/bbb/ //替换当前行第一个 aaa 为 bbb :s/aaa/bbb/g //替换当前行所有 aaa 为 bbb :66s/aaa/bbb/g //替换 66 行 aaa 为 bbb MOREVI中的多行删除与复制]]></content>
   </entry>
   <entry>
-    <title><![CDATA[letsencrypt-install]]></title>
+    <title><![CDATA[Letsencrypt 证书安装]]></title>
     <url>%2F2018%2F02%2F06%2Fletsencrypt-install%2F</url>
-    <content type="text"><![CDATA[概述先决条件1、拥有一个域名，例如mydomain.com (在国内主机的用的话，还需要通过ICP备案)2、在域名服务器创建一条A记录，指向云主机的公网IP地址。例如demo.mydomain.com指向xxx.xxx.xxx.xxx的IP地址3、要等到新创建的域名解析能在公网上被解析到。4、据说国内的域名提供商对letsencrypt的支持非常差，但是经过试验，至少现阶段用dnspod解析的域名还没碰到问题。 前往 Certbot 官网按照步骤安装 certbotcertbot certonly –webroot -w /opt/www/rak.tongfutele.com -d rak.tongfutele.com -m cnskyrin@163.com –agree-tos certbot certonly –standalone -d tongfutele.com -d rak.tongfutele.com 结尾未完结，参考这里]]></content>
+    <content type="text"><![CDATA[概述本文介绍如何通过 Certbot 安装 Https Letsencrypt 证书 先决条件1、拥有一个域名，例如mydomain.com (在国内主机的用的话，还需要通过ICP备案)2、在域名服务器创建一条A记录，指向云主机的公网IP地址。例如demo.mydomain.com指向xxx.xxx.xxx.xxx的IP地址3、要等到新创建的域名解析能在公网上被解析到 前往 Certbot 官网按照步骤安装 certbot Certbot 两种生成 证书的方式certbot 模式（推荐）certbot 会启动自带的 nginx（如果服务器上已经有nginx，需要停止已有的nginx）生成证书 certbot certonly --standalone -d example.com -d www.example.com webroot 模式certbot会生成随机文件到给定目录(nginx配置的网页目录)下的/.well-known/acme-challenge/目录里面，并通过已经启动的nginx验证随机文件，生成证书 certbot certonly --webroot -w /var/www/example/ -d www.example.com -d example.com -w /var/www/other -d other.example.net -d another.other.example.net 续期certbot renew --dry-run Certbot Docs]]></content>
   </entry>
   <entry>
     <title><![CDATA[code-style]]></title>

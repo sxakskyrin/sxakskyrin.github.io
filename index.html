@@ -328,7 +328,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/02/06/vim-tips/" itemprop="url">vim-tips</a></h1>
+                <a class="post-title-link" href="/2018/02/06/vim-tips/" itemprop="url">vim 常用命令</a></h1>
         
 
         <div class="post-meta">
@@ -452,7 +452,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/02/06/letsencrypt-install/" itemprop="url">letsencrypt-install</a></h1>
+                <a class="post-title-link" href="/2018/02/06/letsencrypt-install/" itemprop="url">Letsencrypt 证书安装</a></h1>
         
 
         <div class="post-meta">
@@ -504,10 +504,15 @@
       
         
           
-            <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><h2 id="先决条件"><a href="#先决条件" class="headerlink" title="先决条件"></a>先决条件</h2><p>1、拥有一个域名，例如mydomain.com (在国内主机的用的话，还需要通过ICP备案)<br>2、在域名服务器创建一条A记录，指向云主机的公网IP地址。例如demo.mydomain.com指向xxx.xxx.xxx.xxx的IP地址<br>3、要等到新创建的域名解析能在公网上被解析到。<br>4、据说国内的域名提供商对letsencrypt的支持非常差，但是经过试验，至少现阶段用dnspod解析的域名还没碰到问题。</p>
-<h2 id="前往-Certbot-官网按照步骤安装-certbot"><a href="#前往-Certbot-官网按照步骤安装-certbot" class="headerlink" title="前往 Certbot 官网按照步骤安装  certbot"></a>前往 <a href="https://certbot.eff.org/" target="_blank" rel="noopener">Certbot 官网</a>按照步骤安装  certbot</h2><p>certbot certonly –webroot -w /opt/www/rak.tongfutele.com -d rak.tongfutele.com -m cnskyrin@163.com –agree-tos</p>
-<p>certbot certonly –standalone -d tongfutele.com -d rak.tongfutele.com</p>
-<h2 id="结尾"><a href="#结尾" class="headerlink" title="结尾"></a>结尾</h2><p>未完结，参考<a href="http://www.mamicode.com/info-detail-1782380.html" target="_blank" rel="noopener">这里</a></p>
+            <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>本文介绍如何通过 Certbot 安装 Https Letsencrypt 证书</p>
+<h2 id="先决条件"><a href="#先决条件" class="headerlink" title="先决条件"></a>先决条件</h2><p>1、拥有一个域名，例如mydomain.com (在国内主机的用的话，还需要通过ICP备案)<br>2、在域名服务器创建一条A记录，指向云主机的公网IP地址。例如demo.mydomain.com指向xxx.xxx.xxx.xxx的IP地址<br>3、要等到新创建的域名解析能在公网上被解析到</p>
+<h2 id="前往-Certbot-官网按照步骤安装-certbot"><a href="#前往-Certbot-官网按照步骤安装-certbot" class="headerlink" title="前往 Certbot 官网按照步骤安装  certbot"></a>前往 <a href="https://certbot.eff.org/" target="_blank" rel="noopener">Certbot 官网</a>按照步骤安装  certbot</h2><p><img src="http://upload-images.jianshu.io/upload_images/3551539-2287f2c0cb3901f6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Certbot"></p>
+<h2 id="Certbot-两种生成-证书的方式"><a href="#Certbot-两种生成-证书的方式" class="headerlink" title="Certbot 两种生成 证书的方式"></a>Certbot 两种生成 证书的方式</h2><h4 id="certbot-模式（推荐）"><a href="#certbot-模式（推荐）" class="headerlink" title="certbot 模式（推荐）"></a>certbot 模式（推荐）</h4><p>certbot 会启动自带的 nginx（如果服务器上已经有nginx，需要停止已有的nginx）生成证书</p>
+<pre><code>certbot certonly --standalone -d example.com -d www.example.com
+</code></pre><h4 id="webroot-模式"><a href="#webroot-模式" class="headerlink" title="webroot 模式"></a>webroot 模式</h4><p>certbot会生成随机文件到给定目录(nginx配置的网页目录)下的/.well-known/acme-challenge/目录里面，并通过已经启动的nginx验证随机文件，生成证书</p>
+<pre><code>certbot certonly --webroot -w /var/www/example/ -d www.example.com -d example.com -w /var/www/other -d other.example.net -d another.other.example.net
+</code></pre><h4 id="续期"><a href="#续期" class="headerlink" title="续期"></a>续期</h4><pre><code>certbot renew --dry-run
+</code></pre><p><a href="https://certbot.eff.org/docs/using.html" target="_blank" rel="noopener">Certbot Docs</a></p>
 
           
         
