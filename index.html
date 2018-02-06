@@ -505,7 +505,7 @@
         
           
             <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><h2 id="先决条件"><a href="#先决条件" class="headerlink" title="先决条件"></a>先决条件</h2><p>1、拥有一个域名，例如mydomain.com (在国内主机的用的话，还需要通过ICP备案)<br>2、在域名服务器创建一条A记录，指向云主机的公网IP地址。例如demo.mydomain.com指向xxx.xxx.xxx.xxx的IP地址<br>3、要等到新创建的域名解析能在公网上被解析到。<br>4、据说国内的域名提供商对letsencrypt的支持非常差，但是经过试验，至少现阶段用dnspod解析的域名还没碰到问题。</p>
-<h2 id="前往-certbot-官网按照步骤安装-certbot"><a href="#前往-certbot-官网按照步骤安装-certbot" class="headerlink" title="前往 certbot 官网按照步骤安装  certbot"></a>前往 <a href="https://certbot.eff.org/" target="_blank" rel="noopener">certbot</a> 官网按照步骤安装  certbot</h2><p>certbot certonly –webroot -w /opt/www/rak.tongfutele.com -d rak.tongfutele.com -m cnskyrin@163.com –agree-tos</p>
+<h2 id="前往-Certbot-官网按照步骤安装-certbot"><a href="#前往-Certbot-官网按照步骤安装-certbot" class="headerlink" title="前往 Certbot 官网按照步骤安装  certbot"></a>前往 <a href="https://certbot.eff.org/" target="_blank" rel="noopener">Certbot 官网</a>按照步骤安装  certbot</h2><p>certbot certonly –webroot -w /opt/www/rak.tongfutele.com -d rak.tongfutele.com -m cnskyrin@163.com –agree-tos</p>
 <p>certbot certonly –standalone -d tongfutele.com -d rak.tongfutele.com</p>
 <h2 id="结尾"><a href="#结尾" class="headerlink" title="结尾"></a>结尾</h2><p>未完结，参考<a href="http://www.mamicode.com/info-detail-1782380.html" target="_blank" rel="noopener">这里</a></p>
 
