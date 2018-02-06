@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[vim-tips]]></title>
+    <url>%2F2018%2F02%2F06%2Fvim-tips%2F</url>
+    <content type="text"><![CDATA[概述记录一些 vim 的常用命令 多行删除 :1,10d //删除1~10行 显示行号 :set num //可以在 ~/.vimrc 中设置为永久生效项 修改文本编码格式 :set encoding=utf-8 搜索内容 /aaa //从当前位置往下搜索 aaa ?aaa //从当前位置往上搜索 aaa 内容替换 :%s/aaa/bbb/g //替换全文 aaa 为 bbb :s/aaa/bbb/ //替换当前行第一个 aaa 为 bbb :s/aaa/bbb/g //替换当前行所有 aaa 为 bbb :66s/aaa/bbb/g //替换 66 行 aaa 为 bbb MROE VI中的多行删除与复制]]></content>
+  </entry>
+  <entry>
+    <title><![CDATA[letsencrypt-install]]></title>
+    <url>%2F2018%2F02%2F06%2Fletsencrypt-install%2F</url>
+    <content type="text"><![CDATA[概述先决条件1、拥有一个域名，例如mydomain.com (在国内主机的用的话，还需要通过ICP备案)2、在域名服务器创建一条A记录，指向云主机的公网IP地址。例如demo.mydomain.com指向xxx.xxx.xxx.xxx的IP地址3、要等到新创建的域名解析能在公网上被解析到。4、据说国内的域名提供商对letsencrypt的支持非常差，但是经过试验，至少现阶段用dnspod解析的域名还没碰到问题。 前往 certbot 官网按照步骤安装 certbotcertbot certonly –webroot -w /opt/www/rak.tongfutele.com -d rak.tongfutele.com -m cnskyrin@163.com –agree-tos certbot certonly –standalone -d tongfutele.com -d rak.tongfutele.com 结尾未完结，参考这里]]></content>
+  </entry>
+  <entry>
     <title><![CDATA[code-style]]></title>
     <url>%2F2018%2F02%2F01%2Fcode-style%2F</url>
     <content type="text"><![CDATA[/** * @param savedInstanceState */@Overrideprotected void onCreate(Bundle savedInstanceState) &#123; super.onCreate(savedInstanceState); setContentView(R.layout.activity_main); pager = (ViewPager) findViewById(R.id.pager); pager.setAdapter(new FragmentPagerAdapter(getSupportFragmentManager()) &#123; @Override public Fragment getItem(int position) &#123; PageModel pageModel = pageModels.get(position); return PageFragment.newInstance(pageModel.sampleLayoutRes, pageModel.practiceLayoutRes); &#125; // 阿斯顿阿三大苏打 String str = "我是字符串"; int i = 999999999; @Override public int getCount() &#123; return pageModels.size(); &#125; @Override public CharSequence getPageTitle(int position) &#123; return getString(pageModels.get(position).titleRes); &#125; &#125;); tabLayout = (TabLayout) findViewById(R.id.tabLayout); tabLayout.setupWithViewPager(pager);&#125; number 6897BB str 6A8759 javaDoc tag 629755 keywords CC7832 Constracor FFC66D Instans Filed 9876AA Class A9B7C6 Bg #2b2b2b]]></content>
