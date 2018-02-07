@@ -775,11 +775,11 @@
         
           
             <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> savedInstanceState</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">    setContentView(R.layout.activity_main);</span><br><span class="line"></span><br><span class="line">    pager = (ViewPager) findViewById(R.id.pager);</span><br><span class="line">    pager.setAdapter(<span class="keyword">new</span> FragmentPagerAdapter(getSupportFragmentManager()) &#123;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> Fragment <span class="title">getItem</span><span class="params">(<span class="keyword">int</span> position)</span> </span>&#123;</span><br><span class="line">            PageModel pageModel = pageModels.get(position);</span><br><span class="line">            <span class="keyword">return</span> PageFragment.newInstance(pageModel.sampleLayoutRes, pageModel.practiceLayoutRes);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 注释行</span></span><br><span class="line">        String str = <span class="string">"我是字符串"</span>;</span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">999999999</span>;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getCount</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> pageModels.size();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> CharSequence <span class="title">getPageTitle</span><span class="params">(<span class="keyword">int</span> position)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> getString(pageModels.get(position).titleRes);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    tabLayout = (TabLayout) findViewById(R.id.tabLayout);</span><br><span class="line">    tabLayout.setupWithViewPager(pager);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<pre><code>number 6897BB
+<pre><code>Number 6897BB
 
-str 6A8759
+Str 6A8759
 
-javaDoc tag 629755  
+JavaDoc tag 629755  
 
 keywords CC7832
 
@@ -789,7 +789,7 @@ Instans Filed 9876AA
 
 Class A9B7C6
 
-Bg #2b2b2b
+Bg 2b2b2b
 </code></pre>
           
         

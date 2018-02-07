@@ -113,7 +113,7 @@
 <meta property="og:site_name" content="Skyrin&#39;s Blog">
 <meta property="og:description" content="概述">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-02-07T07:34:50.598Z">
+<meta property="og:updated_time" content="2018-02-07T07:53:01.391Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux 权限机制">
 <meta name="twitter:description" content="概述">
@@ -432,6 +432,37 @@ drwxr-xr-x              12           1001        1001            4096      Jan 2
 <li>x(access directory):</li>
 </ul>
 <p>咦！目录的执行权限有啥用途啊？目录只是记录文件名而已，总不能拿来执行吧？没错！目录不可以被执行，目录的 x 代表的是用户能否进入该目录成为工作目录的用途！ 所谓的工作目录(work directory)就是你目前所在的目录啦！举例来说，当你登入 Linux 时， 你所在的家目录就是你当下的工作目录。而变换目录的指令是『cd』(change directory)啰！</p>
+<p>上面的东西这么说，也太条列式～太教条了～有没有清晰一点的说明啊？好～让我们来思考一下人类社会使用的东西好了！ 现在假设『文件是一堆文件文件夹』，所以你可能可以在上面写/改一些资料。<br>而『目录是一堆抽屉』，因此你可以将文件夹分类放置到不同的抽屉去。 因此抽屉最大的目的是拿出/放入文件夹喔！现在让我们汇整一下数据：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">类型</th>
+<th style="text-align:left">内容</th>
+<th style="text-align:left">迭代物件</th>
+<th style="text-align:left">r</th>
+<th style="text-align:left">w</th>
+<th style="text-align:left">x</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">文件</td>
+<td style="text-align:left">详细data</td>
+<td style="text-align:left">文件文件夹</td>
+<td style="text-align:left">读到文件内容</td>
+<td style="text-align:left">修改文件内容</td>
+<td style="text-align:left">执行文件内容</td>
+</tr>
+<tr>
+<td style="text-align:left">目录</td>
+<td style="text-align:left">档名</td>
+<td style="text-align:left">可分类抽屉</td>
+<td style="text-align:left">读到档名</td>
+<td style="text-align:left">修改档名</td>
+<td style="text-align:left">进入该目录的权限</td>
+</tr>
+</tbody>
+</table>
 
       
     </div>
