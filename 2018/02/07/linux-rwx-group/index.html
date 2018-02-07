@@ -113,7 +113,7 @@
 <meta property="og:site_name" content="Skyrin&#39;s Blog">
 <meta property="og:description" content="概述">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-02-07T06:38:09.644Z">
+<meta property="og:updated_time" content="2018-02-07T06:47:16.102Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux 权限机制">
 <meta name="twitter:description" content="概述">
@@ -414,43 +414,7 @@ drwxr-xr-x              12           1001        1001            4096      Jan 2
 </tbody>
 </table>
 <p>第一栏后9个字符分别表示了拥有者、所属组、其它用户对该文件拥有的权限，比如上面<code>LinuxProbe.pdf</code>文件的权限如下</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">-</th>
-<th style="text-align:left">r</th>
-<th style="text-align:left">w</th>
-<th style="text-align:left">-</th>
-<th style="text-align:left">r</th>
-<th style="text-align:left">-</th>
-<th style="text-align:left">-</th>
-<th style="text-align:left">r</th>
-<th style="text-align:left">-</th>
-<th style="text-align:left">-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">文件</td>
-<td style="text-align:left">读</td>
-<td style="text-align:left">写</td>
-<td style="text-align:left">无</td>
-<td style="text-align:left">读</td>
-<td style="text-align:left">无</td>
-<td style="text-align:left">无</td>
-<td style="text-align:left">读</td>
-<td style="text-align:left">无</td>
-<td style="text-align:left">无</td>
-</tr>
-<tr>
-<td style="text-align:left">文件</td>
-<td style="text-align:left">拥有者</td>
-<td style="text-align:left">所属组</td>
-<td style="text-align:left">其他人</td>
-</tr>
-</tbody>
-</table>
-<table><br>    <tr><br>        <td>列一</td><br>        <td>列二</td><br>   </tr><br>    <tr><br>        <td rowspan="2">合并列</td><br>        <td>行二列二</td><br>    </tr><br>    <tr><br>        <td>行三列二</td><br>    </tr><br></table>
+<table><br>    <tr><br>        <td>-</td><br>        <td>r</td><br>        <td>w</td><br>        <td>-</td><br>        <td>r</td><br>        <td>-</td><br>        <td>-</td><br>        <td>r</td><br>        <td>-</td><br>        <td>-</td><br>   </tr><br>    <tr><br>        <td>文件</td><br>        <td>可读</td><br>        <td>可写</td><br>        <td>无权限</td><br>        <td>可读</td><br>        <td>无权限</td><br>        <td>无权限</td><br>        <td>可读</td><br>        <td>无权限</td><br>        <td>无权限</td><br>    </tr><br>    <tr><br>        <td></td><br>        <td colspan="3">拥有者</td><br>        <td colspan="3">所属组</td><br>        <td colspan="3">其它</td><br>    </tr><br></table>
       
     </div>
     
